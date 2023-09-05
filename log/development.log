@@ -1,0 +1,1498 @@
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230905060258)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_name" varchar, "password_digest" varchar, "email" varchar, "type" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230905060258"]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-09-05 06:03:10.726339"], ["updated_at", "2023-09-05 06:03:10.726339"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUserProfiles (20230905060559)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "user_profiles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "f_name" varchar, "l_name" varchar, "skills" varchar, "experience" varchar, "education" varchar, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_87a6352e58"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_user_profiles_on_user_id" ON "user_profiles" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230905060559"]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateJobs (20230905060857)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "jobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "job_title" varchar, "description" varchar, "location" varchar, "salary" decimal, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_df6238c8a6"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_jobs_on_user_id" ON "jobs" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230905060857"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUserApplications (20230905061750)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "user_applications" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "status" varchar, "job_id" integer NOT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_a541915ef1"
+FOREIGN KEY ("job_id")
+  REFERENCES "jobs" ("id")
+, CONSTRAINT "fk_rails_8f980bd723"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_user_applications_on_job_id" ON "user_applications" ("job_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_user_applications_on_user_id" ON "user_applications" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230905061750"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "ramkushwah"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ram123@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "email", "type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_name", "ramkushwah"], ["password_digest", "[FILTERED]"], ["email", "ram123@gmail.com"], ["type", nil], ["created_at", "2023-09-05 07:00:02.964212"], ["updated_at", "2023-09-05 07:00:02.964212"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "ritikdhote"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "ritikdhote"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "ritikdhote"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  [1m[36mJobRecruiter Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "email", "type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_name", "ritikdhote"], ["password_digest", "[FILTERED]"], ["email", "ritik123@gmail.com"], ["type", "JobRecruiter"], ["created_at", "2023-09-05 07:05:20.953142"], ["updated_at", "2023-09-05 07:05:20.953142"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "ritikdhote"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "ashishpatidar"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ashish123@gmail.com"], ["LIMIT", 1]]
+  [1m[36mJobSeeker Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "email", "type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_name", "ashishpatidar"], ["password_digest", "[FILTERED]"], ["email", "ashish123@gmail.com"], ["type", "JobSeeker"], ["created_at", "2023-09-05 07:07:29.947259"], ["updated_at", "2023-09-05 07:07:29.947259"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? AND "users"."id" != ? LIMIT ?[0m  [["user_name", "ritikdhote"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 2], ["LIMIT", 1]]
+  [1m[36mJobRecruiter Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2023-09-05 07:08:58.770903"], ["id", 2]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."password" = ? LIMIT ?[0m  [["password", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "ramkushwah"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "ritikdhote"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."password" = ? LIMIT ?[0m  [["password", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."password_digest" = ? LIMIT ?[0m  [["password_digest", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."password_digest" = ? LIMIT ?[0m  [["password_digest", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mUserApplication Load (0.1ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications" WHERE "user_applications"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUserProfile Create (0.2ms)[0m  [1m[32mINSERT INTO "user_profiles" ("f_name", "l_name", "skills", "experience", "education", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["f_name", "Ritik"], ["l_name", "Dhote"], ["skills", "python, ruby"], ["experience", "fresher"], ["education", "B.Tech"], ["user_id", 2], ["created_at", "2023-09-05 07:19:48.205965"], ["updated_at", "2023-09-05 07:19:48.205965"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUserProfile Create (0.3ms)[0m  [1m[32mINSERT INTO "user_profiles" ("f_name", "l_name", "skills", "experience", "education", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["f_name", "Ashish"], ["l_name", "Patidar"], ["skills", "Java"], ["experience", "fresher"], ["education", "Mba"], ["user_id", 3], ["created_at", "2023-09-05 07:22:58.013252"], ["updated_at", "2023-09-05 07:22:58.013252"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUserProfile Load (0.4ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mJob Create (1.1ms)[0m  [1m[32mINSERT INTO "jobs" ("job_title", "description", "location", "salary", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["job_title", "junior software developer"], ["description", "Knowledge of ruby and javascript"], ["location", "indore"], ["salary", 20000.0], ["user_id", 2], ["created_at", "2023-09-05 07:30:38.836143"], ["updated_at", "2023-09-05 07:30:38.836143"]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mJob Create (0.3ms)[0m  [1m[32mINSERT INTO "jobs" ("job_title", "description", "location", "salary", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["job_title", "senior software developer"], ["description", "Regarding java developer"], ["location", "indore"], ["salary", 15000.0], ["user_id", 2], ["created_at", "2023-09-05 07:34:15.482952"], ["updated_at", "2023-09-05 07:34:15.482952"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "ramkushwah"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ram123@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "ramkushwah"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ram123@gmail.com"], ["LIMIT", 1]]
+  [1m[36mJobRecruiter Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "email", "type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_name", "ramkushwah"], ["password_digest", "[FILTERED]"], ["email", "ram123@gmail.com"], ["type", "JobRecruiter"], ["created_at", "2023-09-05 07:36:43.015511"], ["updated_at", "2023-09-05 07:36:43.015511"]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUserProfile Create (0.5ms)[0m  [1m[32mINSERT INTO "user_profiles" ("f_name", "l_name", "skills", "experience", "education", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["f_name", "Ram"], ["l_name", "Kushwah"], ["skills", "java, js"], ["experience", "one year"], ["education", "B.Tech"], ["user_id", 4], ["created_at", "2023-09-05 07:38:20.536414"], ["updated_at", "2023-09-05 07:38:20.536414"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUserProfile Load (0.2ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 4], ["LIMIT", 1]]
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mJob Load (0.4ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  [1m[36mJob Load (0.4ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" ORDER BY "jobs"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUserApplication Create (0.3ms)[0m  [1m[32mINSERT INTO "user_applications" ("status", "job_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["status", "applied"], ["job_id", 1], ["user_id", 3], ["created_at", "2023-09-05 07:52:40.913214"], ["updated_at", "2023-09-05 07:52:40.913214"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? AND "users"."id" != ? LIMIT ?[0m  [["user_name", "ramkushwah"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "ram123@gmail.com"], ["id", 4], ["LIMIT", 1]]
+  [1m[36mJobRecruiter Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "type" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["type", "JobSeeker"], ["updated_at", "2023-09-05 07:54:01.791925"], ["id", 4]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUserApplication Create (0.7ms)[0m  [1m[32mINSERT INTO "user_applications" ("status", "job_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["status", "applied"], ["job_id", 1], ["user_id", 4], ["created_at", "2023-09-05 08:32:24.802001"], ["updated_at", "2023-09-05 08:32:24.802001"]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mJob Load (0.3ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mJob Load (0.5ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? ORDER BY "jobs"."id" ASC LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  [1m[36mUserApplication Load (0.5ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications" WHERE "user_applications"."job_id" = ?[0m  [["job_id", 1]]
+  [1m[36mUserApplication Load (0.4ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? ORDER BY "jobs"."id" ASC LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  [1m[36mUserApplication Load (0.1ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications" WHERE "user_applications"."job_id" = ?[0m  [["job_id", 1]]
+  [1m[36mUserApplication Load (0.3ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications" WHERE "user_applications"."job_id" = ?[0m  [["job_id", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUserApplication Update (0.5ms)[0m  [1m[33mUPDATE "user_applications" SET "status" = ?, "updated_at" = ? WHERE "user_applications"."id" = ?[0m  [["status", "accept"], ["updated_at", "2023-09-05 08:58:49.395190"], ["id", 1]]
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUserApplication Load (0.3ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications"[0m
+  [1m[36mUserApplication Load (0.5ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications" WHERE "user_applications"."status" = ?[0m  [["status", "accept"]]
+  [1m[36mUserApplication Load (0.2ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications" ORDER BY "user_applications"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUserApplication Update (0.2ms)[0m  [1m[33mUPDATE "user_applications" SET "status" = ?, "updated_at" = ? WHERE "user_applications"."id" = ?[0m  [["status", "applied"], ["updated_at", "2023-09-05 09:03:11.143047"], ["id", 1]]
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUserApplication Load (0.4ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications"[0m
+Started POST "/users" for ::1 at 2023-09-05 15:14:04 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Completed 422 Unprocessable Entity in 36ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 32558)
+
+
+Started GET "/users" for ::1 at 2023-09-05 15:14:15 +0530
+Processing by UsersController#show as */*
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 422 Unprocessable Entity in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 534)
+
+
+Started GET "/users" for ::1 at 2023-09-05 15:15:18 +0530
+Processing by UsersController#index as */*
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 6871)
+
+
+  
+NoMethodError (undefined method `json' for #<UsersController:0x0000000000e6f0>
+Did you mean?  JSON):
+  
+app/controllers/users_controller.rb:8:in `index'
+Started GET "/users" for ::1 at 2023-09-05 15:15:29 +0530
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 18ms (Views: 11.1ms | ActiveRecord: 1.1ms | Allocations: 11571)
+
+
+Started POST "/users" for ::1 at 2023-09-05 15:18:26 +0530
+Processing by UsersController#create as */*
+  Parameters: {"user_name"=>"pradeepsharma", "email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "pradeepsharma"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Completed 422 Unprocessable Entity in 255ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 4370)
+
+
+Started POST "/users" for ::1 at 2023-09-05 15:18:45 +0530
+Processing by UsersController#create as */*
+  Parameters: {"user_name"=>"pradeepsharma", "email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]", "type"=>"JobSeeker"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "pradeepsharma"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mJobSeeker Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "email", "type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_name", "pradeepsharma"], ["password_digest", "[FILTERED]"], ["email", "pradeep123@gmail.com"], ["type", "JobSeeker"], ["created_at", "2023-09-05 09:48:45.589300"], ["updated_at", "2023-09-05 09:48:45.589300"]]
+  ↳ app/controllers/users_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:17:in `create'
+Completed 200 OK in 262ms (Views: 0.5ms | ActiveRecord: 2.5ms | Allocations: 4378)
+
+
+Started POST "/user/login" for ::1 at 2023-09-05 15:21:13 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gamil.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gamil.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `login'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1021)
+
+
+Started POST "/user/login" for ::1 at 2023-09-05 15:22:06 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gamil.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gamil.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `login'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 5464)
+
+
+Started POST "/user/login" for ::1 at 2023-09-05 15:22:29 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gamil.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gamil.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `login'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 5453)
+
+
+Started POST "/user/login" for ::1 at 2023-09-05 15:24:14 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gamil.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gamil.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `login'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 5417)
+
+
+Started POST "/user/login" for ::1 at 2023-09-05 15:28:23 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gamil.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gamil.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `login'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 5352)
+
+
+Started POST "/users" for ::1 at 2023-09-05 15:44:28 +0530
+Processing by UsersController#create as */*
+  Parameters: {"user_name"=>"pradeepsharma", "email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]", "type"=>"JobSeeker"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "pradeepsharma"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `create'
+Completed 422 Unprocessable Entity in 275ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 12519)
+
+
+Started POST "/user/login" for ::1 at 2023-09-05 15:44:34 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gamil.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gamil.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `login'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 867)
+
+
+Started POST "/user/login" for ::1 at 2023-09-05 15:44:58 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `login'
+Completed 500 Internal Server Error in 258ms (ActiveRecord: 0.1ms | Allocations: 1599)
+
+
+  
+NoMethodError (undefined method `jwt_encode' for JsonWebToken:Module):
+  
+app/controllers/users_controller.rb:9:in `login'
+Started POST "/user/login" for ::1 at 2023-09-05 15:45:53 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `login'
+Completed 500 Internal Server Error in 261ms (ActiveRecord: 0.1ms | Allocations: 1557)
+
+
+  
+NoMethodError (undefined method `jwt_encode' for JsonWebToken:Module):
+  
+app/controllers/users_controller.rb:9:in `login'
+Started POST "/user/login" for ::1 at 2023-09-05 15:46:04 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `login'
+Completed 500 Internal Server Error in 258ms (ActiveRecord: 0.1ms | Allocations: 1556)
+
+
+  
+NoMethodError (undefined method `jwt_encode' for JsonWebToken:Module):
+  
+app/controllers/users_controller.rb:9:in `login'
+Started POST "/user/login" for ::1 at 2023-09-05 15:48:14 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `login'
+Completed 500 Internal Server Error in 271ms (ActiveRecord: 1.0ms | Allocations: 10013)
+
+
+  
+NoMethodError (undefined method `jwt_encode' for JsonWebToken:Module):
+  
+app/controllers/users_controller.rb:9:in `login'
+Started POST "/user/login" for ::1 at 2023-09-05 15:50:16 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `login'
+Completed 500 Internal Server Error in 259ms (ActiveRecord: 0.1ms | Allocations: 1558)
+
+
+  
+NoMethodError (undefined method `jwt_encode' for JsonWebToken:Module):
+  
+app/controllers/users_controller.rb:9:in `login'
+Started POST "/user/login" for ::1 at 2023-09-05 15:55:52 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `login'
+Completed 500 Internal Server Error in 270ms (ActiveRecord: 1.1ms | Allocations: 10109)
+
+
+  
+NoMethodError (undefined method `jwt_encode' for JsonWebToken:Module):
+  
+app/controllers/users_controller.rb:9:in `login'
+Started POST "/user/login" for ::1 at 2023-09-05 15:57:33 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `login'
+Completed 200 OK in 271ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 9341)
+
+
+Started GET "/users" for ::1 at 2023-09-05 16:00:20 +0530
+Processing by UsersController#show as */*
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1092)
+
+
+  
+NoMethodError (undefined method `jwt_decode' for JsonWebToken:Module):
+  
+app/controllers/application_controller.rb:15:in `authenticate_request'
+Started GET "/users" for ::1 at 2023-09-05 16:02:44 +0530
+Processing by UsersController#show as */*
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1096)
+
+
+  
+NoMethodError (undefined method `jwt_decode' for JsonWebToken:Module):
+  
+app/controllers/application_controller.rb:13:in `authenticate_request'
+Started GET "/users" for ::1 at 2023-09-05 16:03:17 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 1.0ms | Allocations: 9463)
+
+
+Started GET "/users" for ::1 at 2023-09-05 16:03:43 +0530
+Processing by UsersController#show as */*
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 422 Unprocessable Entity in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 398)
+
+
+Started GET "/users" for ::1 at 2023-09-05 16:04:04 +0530
+Processing by UsersController#show as */*
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 422 Unprocessable Entity in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 394)
+
+
+Started GET "/users" for ::1 at 2023-09-05 16:04:13 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 693)
+
+
+Started PUT "/users" for ::1 at 2023-09-05 16:11:02 +0530
+Processing by UsersController#update as */*
+  Parameters: {"username"=>"Pradeepsharma"}
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 422 Unprocessable Entity in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 418)
+
+
+Started PUT "/users" for ::1 at 2023-09-05 16:11:26 +0530
+Processing by UsersController#update as */*
+  Parameters: {"username"=>"Pradeepsharma"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+[31mUnpermitted parameter: :username. Context: { controller: UsersController, action: update, request: #<ActionDispatch::Request:0x00007f180421f368>, params: {"username"=>"Pradeepsharma", "controller"=>"users", "action"=>"update"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:30:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? AND "users"."id" != ? LIMIT ?[0m  [["user_name", "pradeepsharma"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:30:in `update'
+Completed 200 OK in 19ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 12188)
+
+
+Started GET "/users" for ::1 at 2023-09-05 16:11:35 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 705)
+
+
+Started PUT "/users" for ::1 at 2023-09-05 16:11:54 +0530
+Processing by UsersController#update as */*
+  Parameters: {"username"=>"psharma"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+[31mUnpermitted parameter: :username. Context: { controller: UsersController, action: update, request: #<ActionDispatch::Request:0x00007f18043485c8>, params: {"username"=>"psharma", "controller"=>"users", "action"=>"update"} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:30:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? AND "users"."id" != ? LIMIT ?[0m  [["user_name", "pradeepsharma"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30:in `update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:30:in `update'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 3413)
+
+
+Started GET "/users" for ::1 at 2023-09-05 16:11:59 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 691)
+
+
+Started GET "/users" for ::1 at 2023-09-05 16:13:55 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 691)
+
+
+Started POST "/user/login" for ::1 at 2023-09-05 16:14:03 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `login'
+Completed 200 OK in 256ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 981)
+
+
+Started GET "/users" for ::1 at 2023-09-05 16:14:15 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 691)
+
+
+Started PUT "/users" for ::1 at 2023-09-05 16:14:28 +0530
+Processing by UsersController#update as */*
+  Parameters: {"user_name"=>"psharma"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:30:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? AND "users"."id" != ? LIMIT ?[0m  [["user_name", "psharma"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30:in `update'
+  [1m[36mJobSeeker Update (2.4ms)[0m  [1m[33mUPDATE "users" SET "user_name" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["user_name", "psharma"], ["updated_at", "2023-09-05 10:44:28.244497"], ["id", 5]]
+  ↳ app/controllers/users_controller.rb:30:in `update'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:30:in `update'
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 5.1ms | Allocations: 4111)
+
+
+Started GET "/users" for ::1 at 2023-09-05 16:14:35 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 691)
+
+
+Started PUT "/users" for ::1 at 2023-09-05 16:17:00 +0530
+Processing by UsersController#update as */*
+  Parameters: {"user_name"=>"pradeepsharma"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:30:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? AND "users"."id" != ? LIMIT ?[0m  [["user_name", "pradeepsharma"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30:in `update'
+  [1m[36mJobSeeker Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "user_name" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["user_name", "pradeepsharma"], ["updated_at", "2023-09-05 10:47:00.055714"], ["id", 5]]
+  ↳ app/controllers/users_controller.rb:30:in `update'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:30:in `update'
+Completed 200 OK in 21ms (Views: 0.3ms | ActiveRecord: 3.4ms | Allocations: 13169)
+
+
+Started GET "/users" for ::1 at 2023-09-05 16:17:04 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 705)
+
+
+Started DELETE "/users" for ::1 at 2023-09-05 16:18:41 +0530
+Processing by UsersController#destroy as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[36mUserProfile Load (0.2ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ?[0m  [["user_id", 5]]
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[36mUserApplication Load (0.3ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications" WHERE "user_applications"."user_id" = ?[0m  [["user_id", 5]]
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[36mJobSeeker Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+Completed 200 OK in 44ms (Views: 0.1ms | ActiveRecord: 3.4ms | Allocations: 22589)
+
+
+Started GET "/users" for ::1 at 2023-09-05 16:18:48 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 873)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=5):
+  
+app/controllers/application_controller.rb:14:in `authenticate_request'
+Started GET "/users" for ::1 at 2023-09-05 16:19:52 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 0.9ms | Allocations: 5999)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUserProfile Load (0.5ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+Started POST "/user/login" for ::1 at 2023-09-05 16:32:22 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ritik123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `login'
+Completed 200 OK in 274ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 8807)
+
+
+Started GET "/users_profiles" for ::1 at 2023-09-05 16:32:45 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/users_profiles"):
+  
+Started GET "/user_profiles" for ::1 at 2023-09-05 16:37:50 +0530
+  
+ActionController::RoutingError (uninitialized constant UserProfilesController
+Did you mean?  UsersProfileController):
+  
+Started GET "/users_profile" for ::1 at 2023-09-05 16:38:30 +0530
+  
+ActionController::RoutingError (uninitialized constant UsersProfilesController
+Did you mean?  UsersProfileController):
+  
+Started GET "/users_profile" for ::1 at 2023-09-05 16:39:39 +0530
+  
+ActionController::RoutingError (uninitialized constant UsersProfilesController
+Did you mean?  UsersProfileController):
+  
+Started GET "/users_profile" for ::1 at 2023-09-05 16:39:51 +0530
+  
+ActionController::RoutingError (uninitialized constant UsersProfilesController
+Did you mean?  UsersProfileController):
+  
+Started GET "/user_profiles" for ::1 at 2023-09-05 16:43:44 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:7:in `show'
+Completed 200 OK in 35ms (Views: 0.5ms | ActiveRecord: 1.2ms | Allocations: 28751)
+
+
+Started POST "/users" for ::1 at 2023-09-05 16:52:28 +0530
+Processing by UsersController#create as */*
+  Parameters: {"user_name"=>"pradeepsharma", "email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]", "type"=>"JobSeeker"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:22:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "pradeepsharma"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `create'
+  [1m[36mJobSeeker Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "email", "type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_name", "pradeepsharma"], ["password_digest", "[FILTERED]"], ["email", "pradeep123@gmail.com"], ["type", "JobSeeker"], ["created_at", "2023-09-05 11:22:28.565695"], ["updated_at", "2023-09-05 11:22:28.565695"]]
+  ↳ app/controllers/users_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:22:in `create'
+Completed 200 OK in 281ms (Views: 0.3ms | ActiveRecord: 2.7ms | Allocations: 11658)
+
+
+Started POST "/user/login" for ::1 at 2023-09-05 16:52:58 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `login'
+Completed 200 OK in 258ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1025)
+
+
+Started GET "/user_profiles" for ::1 at 2023-09-05 16:53:13 +0530
+Processing by UserProfilesController#show as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 758)
+
+
+  
+NoMethodError (undefined method `user_profile' for nil:NilClass):
+  
+app/controllers/user_profiles_controller.rb:7:in `show'
+Started POST "/user_profiles" for ::1 at 2023-09-05 16:55:01 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 844)
+
+
+  
+NoMethodError (undefined method `new' for nil:NilClass):
+  
+app/controllers/user_profiles_controller.rb:11:in `create'
+Started GET "/users" for ::1 at 2023-09-05 16:55:13 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 1322)
+
+
+Started GET "/users" for ::1 at 2023-09-05 16:55:23 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 703)
+
+
+Started POST "/user_profiles" for ::1 at 2023-09-05 16:55:57 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 839)
+
+
+  
+NoMethodError (undefined method `new' for nil:NilClass):
+  
+app/controllers/user_profiles_controller.rb:11:in `create'
+Started GET "/user_profiles" for ::1 at 2023-09-05 16:56:23 +0530
+Processing by UserProfilesController#show as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 782)
+
+
+  
+NoMethodError (undefined method `user_profile' for nil:NilClass):
+  
+app/controllers/user_profiles_controller.rb:7:in `show'
+Started GET "/user_profiles" for ::1 at 2023-09-05 16:56:38 +0530
+Processing by UserProfilesController#show as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 782)
+
+
+  
+NoMethodError (undefined method `user_profile' for nil:NilClass):
+  
+app/controllers/user_profiles_controller.rb:7:in `show'
+Started POST "/user/login" for ::1 at 2023-09-05 16:57:07 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `login'
+Completed 200 OK in 262ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 638)
+
+
+Started GET "/user_profiles" for ::1 at 2023-09-05 16:57:16 +0530
+Processing by UserProfilesController#show as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 782)
+
+
+  
+NoMethodError (undefined method `user_profile' for nil:NilClass):
+  
+app/controllers/user_profiles_controller.rb:7:in `show'
+Started POST "/user/login" for ::1 at 2023-09-05 16:57:37 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ritik123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `login'
+Completed 200 OK in 271ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 4934)
+
+
+Started GET "/user_profiles" for ::1 at 2023-09-05 16:57:48 +0530
+Processing by UserProfilesController#show as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 783)
+
+
+  
+NoMethodError (undefined method `user_profile' for nil:NilClass):
+  
+app/controllers/user_profiles_controller.rb:7:in `show'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUserProfile Load (0.5ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+Started GET "/user_profiles" for ::1 at 2023-09-05 16:59:03 +0530
+Processing by UserProfilesController#show as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 783)
+
+
+  
+NoMethodError (undefined method `type' for nil:NilClass):
+  
+app/controllers/application_controller.rb:27:in `check_job_recruiter'
+Started GET "/user_profiles" for ::1 at 2023-09-05 16:59:56 +0530
+Processing by UserProfilesController#show as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 753)
+
+
+  
+NoMethodError (undefined method `user_profile' for nil:NilClass):
+  
+app/controllers/user_profiles_controller.rb:7:in `show'
+Started GET "/user_profiles" for ::1 at 2023-09-05 17:00:46 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.2ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:7:in `show'
+Completed 200 OK in 23ms (Views: 0.4ms | ActiveRecord: 1.7ms | Allocations: 15537)
+
+
+Started POST "/user/login" for ::1 at 2023-09-05 17:01:15 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `login'
+Completed 200 OK in 263ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 3003)
+
+
+Started GET "/user_profiles" for ::1 at 2023-09-05 17:01:25 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:7:in `show'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1134)
+
+
+Started POST "/user_profiles" for ::1 at 2023-09-05 17:01:39 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.1ms | Allocations: 3280)
+
+
+  
+NoMethodError (undefined method `new' for #<JobSeeker id: 6, user_name: "pradeepsharma", password_digest: [FILTERED], email: "pradeep123@gmail.com", type: "JobSeeker", created_at: "2023-09-05 11:22:28.565695000 +0000", updated_at: "2023-09-05 11:22:28.565695000 +0000">):
+  
+app/controllers/user_profiles_controller.rb:11:in `create'
+Started POST "/user_profiles" for ::1 at 2023-09-05 17:02:32 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mUserProfile Create (0.2ms)[0m  [1m[32mINSERT INTO "user_profiles" ("f_name", "l_name", "skills", "experience", "education", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["f_name", "Praddep"], ["l_name", "Sharma"], ["skills", "Php"], ["experience", "fresher"], ["education", "Mca"], ["user_id", 6], ["created_at", "2023-09-05 11:32:32.693896"], ["updated_at", "2023-09-05 11:32:32.693896"]]
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mUserProfile Load (0.4ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+Completed 200 OK in 30ms (Views: 0.3ms | ActiveRecord: 4.5ms | Allocations: 17512)
+
+
+Started GET "/user_profiles" for ::1 at 2023-09-05 17:02:44 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:7:in `show'
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1286)
+
+
+Started DELETE "/users" for ::1 at 2023-09-05 17:05:30 +0530
+Processing by UsersController#destroy as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[36mUserProfile Destroy (0.4ms)[0m  [1m[31mDELETE FROM "user_profiles" WHERE "user_profiles"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[36mUserApplication Load (0.1ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications" WHERE "user_applications"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[36mJobSeeker Destroy (0.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:38:in `destroy'
+Completed 200 OK in 40ms (Views: 0.2ms | ActiveRecord: 5.4ms | Allocations: 27651)
+
+
+Started POST "/users" for ::1 at 2023-09-05 17:05:39 +0530
+Processing by UsersController#create as */*
+  Parameters: {"user_name"=>"pradeepsharma", "email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]", "type"=>"JobSeeker"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:22:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."user_name" = ? LIMIT ?[0m  [["user_name", "pradeepsharma"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `create'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `create'
+  [1m[36mJobSeeker Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "password_digest", "email", "type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_name", "pradeepsharma"], ["password_digest", "[FILTERED]"], ["email", "pradeep123@gmail.com"], ["type", "JobSeeker"], ["created_at", "2023-09-05 11:35:39.572084"], ["updated_at", "2023-09-05 11:35:39.572084"]]
+  ↳ app/controllers/users_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:22:in `create'
+Completed 200 OK in 266ms (Views: 0.3ms | ActiveRecord: 2.2ms | Allocations: 3867)
+
+
+Started POST "/user_profiles" for ::1 at 2023-09-05 17:05:47 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 864)
+
+
+Started POST "/user/login" for ::1 at 2023-09-05 17:06:03 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `login'
+Completed 200 OK in 268ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 987)
+
+
+Started GET "/user_profiles" for ::1 at 2023-09-05 17:06:15 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:7:in `show'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1129)
+
+
+Started POST "/user_profiles" for ::1 at 2023-09-05 17:06:22 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.2ms | Allocations: 1900)
+
+
+  
+NoMethodError (undefined method `new' for nil:NilClass):
+  
+app/controllers/user_profiles_controller.rb:11:in `create'
+Started POST "/user_profiles" for ::1 at 2023-09-05 17:08:17 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.2ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 1.4ms | Allocations: 13487)
+
+
+  
+NoMethodError (undefined method `new' for nil:NilClass):
+  
+app/controllers/user_profiles_controller.rb:11:in `create'
+Started POST "/user_profiles" for ::1 at 2023-09-05 17:15:58 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mUserProfile Create (0.4ms)[0m  [1m[32mINSERT INTO "user_profiles" ("f_name", "l_name", "skills", "experience", "education", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["f_name", "Praddep"], ["l_name", "Sharma"], ["skills", "Php"], ["experience", "fresher"], ["education", "Mca"], ["user_id", 7], ["created_at", "2023-09-05 11:45:58.266761"], ["updated_at", "2023-09-05 11:45:58.266761"]]
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mUserProfile Load (0.2ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+Completed 200 OK in 25ms (Views: 0.3ms | ActiveRecord: 3.3ms | Allocations: 16761)
+
+
+Started POST "/user_profiles" for ::1 at 2023-09-05 17:16:08 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mUserProfile Create (0.3ms)[0m  [1m[32mINSERT INTO "user_profiles" ("f_name", "l_name", "skills", "experience", "education", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["f_name", "Praddep"], ["l_name", "Sharma"], ["skills", "Php"], ["experience", "fresher"], ["education", "Mca"], ["user_id", 7], ["created_at", "2023-09-05 11:46:08.944778"], ["updated_at", "2023-09-05 11:46:08.944778"]]
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mUserProfile Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_profiles" WHERE "user_profiles"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 7.1ms | Allocations: 4662)
+
+
+Started POST "/user_profiles" for ::1 at 2023-09-05 17:16:11 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mUserProfile Create (0.2ms)[0m  [1m[32mINSERT INTO "user_profiles" ("f_name", "l_name", "skills", "experience", "education", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["f_name", "Praddep"], ["l_name", "Sharma"], ["skills", "Php"], ["experience", "fresher"], ["education", "Mca"], ["user_id", 7], ["created_at", "2023-09-05 11:46:11.400876"], ["updated_at", "2023-09-05 11:46:11.400876"]]
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mUserProfile Destroy (0.4ms)[0m  [1m[31mDELETE FROM "user_profiles" WHERE "user_profiles"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+Completed 200 OK in 15ms (Views: 0.3ms | ActiveRecord: 6.5ms | Allocations: 4622)
+
+
+Started POST "/user_profiles" for ::1 at 2023-09-05 17:16:34 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mUserProfile Create (0.2ms)[0m  [1m[32mINSERT INTO "user_profiles" ("f_name", "l_name", "skills", "experience", "education", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["f_name", "Praddep"], ["l_name", "Sharma"], ["skills", "Php"], ["experience", "fresher"], ["education", "Mca"], ["user_id", 7], ["created_at", "2023-09-05 11:46:34.353410"], ["updated_at", "2023-09-05 11:46:34.353410"]]
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mUserProfile Destroy (0.2ms)[0m  [1m[31mDELETE FROM "user_profiles" WHERE "user_profiles"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:11:in `create'
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 5.4ms | Allocations: 4622)
+
+
+Started POST "/user_profiles" for ::1 at 2023-09-05 17:19:24 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 1.6ms | Allocations: 11771)
+
+
+  
+NoMethodError (undefined method `profile' for #<JobSeeker id: 7, user_name: "pradeepsharma", password_digest: [FILTERED], email: "pradeep123@gmail.com", type: "JobSeeker", created_at: "2023-09-05 11:35:39.572084000 +0000", updated_at: "2023-09-05 11:35:39.572084000 +0000">):
+  
+app/controllers/user_profiles_controller.rb:27:in `check_for_existing_profile'
+Started POST "/user_profiles" for ::1 at 2023-09-05 17:19:42 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.2ms | Allocations: 3131)
+
+
+  
+NoMethodError (undefined method `profile' for #<JobSeeker id: 7, user_name: "pradeepsharma", password_digest: [FILTERED], email: "pradeep123@gmail.com", type: "JobSeeker", created_at: "2023-09-05 11:35:39.572084000 +0000", updated_at: "2023-09-05 11:35:39.572084000 +0000">):
+  
+app/controllers/user_profiles_controller.rb:27:in `check_for_existing_profile'
+Started POST "/user_profiles" for ::1 at 2023-09-05 17:20:15 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:27:in `check_for_existing_profile'
+Filter chain halted as :check_for_existing_profile rendered or redirected
+Completed 200 OK in 22ms (Views: 0.1ms | ActiveRecord: 1.7ms | Allocations: 15376)
+
+
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUserProfile Load (0.3ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUserProfile Update (0.3ms)[0m  [1m[33mUPDATE "user_profiles" SET "f_name" = ?, "updated_at" = ? WHERE "user_profiles"."id" = ?[0m  [["f_name", "ritikd"], ["updated_at", "2023-09-05 11:55:17.478267"], ["id", 1]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+Started POST "/user/login" for ::1 at 2023-09-05 17:27:32 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ritik123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+Completed 200 OK in 275ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 8752)
+
+
+Started GET "/user_profiles" for ::1 at 2023-09-05 17:27:43 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.2ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:5:in `show'
+Completed 200 OK in 16ms (Views: 0.6ms | ActiveRecord: 0.3ms | Allocations: 6918)
+
+
+Started PUT "/user_profiles" for ::1 at 2023-09-05 17:28:17 +0530
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for UserProfilesController):
+  
+actionpack (7.0.7.2) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.7.2) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+activerecord (7.0.7.2) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.7.2) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.7.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.7.2) lib/rails/engine.rb:530:in `call'
+puma (5.6.7) lib/puma/configuration.rb:252:in `call'
+puma (5.6.7) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.7) lib/puma/server.rb:443:in `process_client'
+puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started PUT "/user_profiles" for ::1 at 2023-09-05 17:33:11 +0530
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for UserProfilesController):
+  
+actionpack (7.0.7.2) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.7.2) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+activerecord (7.0.7.2) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.7.2) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.7.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.7.2) lib/rails/engine.rb:530:in `call'
+puma (5.6.7) lib/puma/configuration.rb:252:in `call'
+puma (5.6.7) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.7) lib/puma/server.rb:443:in `process_client'
+puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/user/login" for ::1 at 2023-09-05 17:33:33 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ritik123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+Completed 200 OK in 281ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 8749)
+
+
+Started PUT "/user_profiles" for ::1 at 2023-09-05 17:33:53 +0530
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for UserProfilesController):
+  
+actionpack (7.0.7.2) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.7.2) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+activerecord (7.0.7.2) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.7.2) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.7.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.7.2) lib/rails/engine.rb:530:in `call'
+puma (5.6.7) lib/puma/configuration.rb:252:in `call'
+puma (5.6.7) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.7) lib/puma/server.rb:443:in `process_client'
+puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started PUT "/user_profiles" for ::1 at 2023-09-05 17:34:48 +0530
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for UserProfilesController):
+  
+actionpack (7.0.7.2) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.7.2) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+activerecord (7.0.7.2) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.7.2) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.7.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.7.2) lib/rails/engine.rb:530:in `call'
+puma (5.6.7) lib/puma/configuration.rb:252:in `call'
+puma (5.6.7) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.7) lib/puma/server.rb:443:in `process_client'
+puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/user_profiles" for ::1 at 2023-09-05 17:37:55 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.5ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:5:in `show'
+Completed 200 OK in 29ms (Views: 0.5ms | ActiveRecord: 2.8ms | Allocations: 15485)
+
+
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUserProfile Load (0.3ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUserProfile Update (0.6ms)[0m  [1m[33mUPDATE "user_profiles" SET "f_name" = ?, "l_name" = ?, "updated_at" = ? WHERE "user_profiles"."id" = ?[0m  [["f_name", "Ritik"], ["l_name", "dhotee"], ["updated_at", "2023-09-05 12:09:20.044952"], ["id", 1]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+Started PUT "/user_profiles" for ::1 at 2023-09-05 17:41:00 +0530
+Processing by UserProfilesController#update as */*
+  Parameters: {"f_name"=>"Ritik"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:19:in `update'
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 1656)
+
+
+Started PUT "/user_profiles" for ::1 at 2023-09-05 17:41:22 +0530
+Processing by UserProfilesController#update as */*
+  Parameters: {"l_name"=>"Dhote"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:19:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:20:in `update'
+  [1m[36mUserProfile Update (0.5ms)[0m  [1m[33mUPDATE "user_profiles" SET "l_name" = ?, "updated_at" = ? WHERE "user_profiles"."id" = ?[0m  [["l_name", "Dhote"], ["updated_at", "2023-09-05 12:11:22.809978"], ["id", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:20:in `update'
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:20:in `update'
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 3.5ms | Allocations: 3053)
+
+
+Started GET "/user_profiles" for ::1 at 2023-09-05 17:41:28 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:5:in `show'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1268)
+
+
+Started PUT "/user_profiles" for ::1 at 2023-09-05 17:42:43 +0530
+Processing by UserProfilesController#update as */*
+  Parameters: {"l_name"=>""}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:19:in `update'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 2386)
+
+
+Started DELETE "/user_profiles" for ::1 at 2023-09-05 17:46:35 +0530
+Processing by UserProfilesController#destroy as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:27:in `destroy'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 15350)
+
+
+Started GET "/user_profiles" for ::1 at 2023-09-05 17:46:40 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:5:in `show'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1295)
+
+
+Started GET "/user_profiles" for ::1 at 2023-09-05 17:46:43 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:5:in `show'
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 1268)
+
+
+Started POST "/user/login" for ::1 at 2023-09-05 17:47:50 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"pradeep123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "pradeep123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+Completed 200 OK in 270ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 9169)
+
+
+Started DELETE "/user_profiles" for ::1 at 2023-09-05 17:48:04 +0530
+Processing by UserProfilesController#destroy as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:27:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:28:in `destroy'
+  [1m[36mUserProfile Destroy (0.3ms)[0m  [1m[31mDELETE FROM "user_profiles" WHERE "user_profiles"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/user_profiles_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:28:in `destroy'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 2.9ms | Allocations: 8549)
+
+
+Started GET "/user_profiles" for ::1 at 2023-09-05 17:48:11 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:5:in `show'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1117)
+
+
+Started POST "/user_profiles" for ::1 at 2023-09-05 17:50:54 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:42:in `check_for_existing_profile'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:9:in `create'
+  [1m[36mUserProfile Create (0.3ms)[0m  [1m[32mINSERT INTO "user_profiles" ("f_name", "l_name", "skills", "experience", "education", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["f_name", "Praddep"], ["l_name", "Sharma"], ["skills", "Php"], ["experience", "fresher"], ["education", "Mca"], ["user_id", 7], ["created_at", "2023-09-05 12:20:54.304814"], ["updated_at", "2023-09-05 12:20:54.304814"]]
+  ↳ app/controllers/user_profiles_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/user_profiles_controller.rb:9:in `create'
+Completed 200 OK in 27ms (Views: 0.3ms | ActiveRecord: 4.2ms | Allocations: 17440)
+
+
+Started POST "/user_profiles" for ::1 at 2023-09-05 17:50:59 +0530
+Processing by UserProfilesController#create as */*
+  Parameters: {"f_name"=>"Praddep", "l_name"=>"Sharma", "skills"=>"Php", "experience"=>"fresher", "education"=>"Mca"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:42:in `check_for_existing_profile'
+Filter chain halted as :check_for_existing_profile rendered or redirected
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1167)
+
+
+Started GET "/user_profiles" for ::1 at 2023-09-05 17:54:08 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:5:in `show'
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 1.6ms | Allocations: 17986)
+
+
+  
+NoMethodError (undefined method `exists?' for #<UserProfile id: 9, f_name: "Praddep", l_name: "Sharma", skills: "Php", experience: "fresher", education: "Mca", user_id: 7, created_at: "2023-09-05 12:20:54.304814000 +0000", updated_at: "2023-09-05 12:20:54.304814000 +0000">):
+  
+app/controllers/user_profiles_controller.rb:5:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUserProfile Load (0.3ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+Started GET "/user_profiles" for ::1 at 2023-09-05 17:58:41 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:5:in `show'
+Completed 200 OK in 23ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 15467)
+
+
+Started POST "/user/login" for ::1 at 2023-09-05 18:02:18 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ritik123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+Completed 200 OK in 276ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 9170)
+
+
+Started GET "/jobs" for ::1 at 2023-09-05 18:04:51 +0530
+Processing by JobsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/controllers/jobs_controller.rb:5:in `index'
+Completed 200 OK in 29ms (Views: 11.5ms | ActiveRecord: 1.6ms | Allocations: 29165)
+
+
+                                                                                                                                  
