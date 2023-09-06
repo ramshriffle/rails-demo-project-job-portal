@@ -15,6 +15,8 @@ gem 'jwt'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'active_model_serializers'
+
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
 

@@ -3,7 +3,7 @@ class Job < ApplicationRecord
   has_many :user_applications, dependent: :destroy
 
   validates :job_title, :description, :location, :salary, presence: true
-  validate :recruiter_only_post_jobs, on: :create
+  validate :recruiter_only_post_jobs#, on: :create
 
   private
   def recruiter_only_post_jobs

@@ -1,9 +1,6 @@
 class ApplicationController < ActionController::API
   include JsonWebToken
-  
   before_action :authenticate_request
-  # before_action :check_job_recruiter
-  # before_action :check_job_seeker
 
   private
   def authenticate_request
@@ -23,11 +20,11 @@ class ApplicationController < ActionController::API
   #   @current_user
   # end
   
-  # def check_job_recruiter
-  #   return render json: { message: "You are not Recruiter" } unless @current_user.type == 'JobRecruiter'
-  # end
+  def check_job_recruiter
+    return render json: { message: "You are not Recruiter" } unless @current_user.type == 'JobRecruiter'
+  end
   
-  # def check_job_seeker
-  #   return render json: { message: "You are not Seeker" } unless @current_user.type == 'JobSeeker'
-  # end
+  def check_job_seeker
+    return render json: { message: "You are not Seeker" } unless @current_user.type == 'JobSeeker'
+  end
 end

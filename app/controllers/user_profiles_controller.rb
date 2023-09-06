@@ -10,7 +10,7 @@ class UserProfilesController < ApplicationController
     if profile   
       render json: { message:"User Profile Created!!!", data: profile }
     else
-      render json: profile.errors.full_messages, status: :unprocessable_entity
+      render json: profile.errors.full_messages
     end 
   end
 

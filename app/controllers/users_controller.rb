@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if user.save    
       render json: { message:"User Created!!!", data: user }
     else
-      render json: user.errors.full_messages, status: :unprocessable_entity
+      render json: user.errors.full_messages
     end
   end
   
