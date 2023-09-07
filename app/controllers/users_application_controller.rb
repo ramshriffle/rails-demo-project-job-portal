@@ -3,6 +3,7 @@ class UsersApplicationController < ApplicationController
   before_action :set_param, only: [:show, :update, :destroy]
   before_action :has_applied?, only: [:create]
 
+  # JobSeeker(current_user) can view all applied job application
   def index
     seeker_all_applications=@current_user.user_applications.all
     render json: seeker_all_applications

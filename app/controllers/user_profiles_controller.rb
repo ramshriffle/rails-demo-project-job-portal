@@ -7,7 +7,7 @@ class UserProfilesController < ApplicationController
   
   def create
     profile=@current_user.create_user_profile(user_profile_param)
-    if profile   
+    if profile 
       render json: { message:"User Profile Created!!!", data: profile }
     else
       render json: profile.errors.full_messages
@@ -15,18 +15,18 @@ class UserProfilesController < ApplicationController
   end
 
   def update
-    user=@current_user.user_profile
+    user = @current_user.user_profile
     if user.update(user_profile_param)
-      render json: { message: 'User Profile updated', data: @current_user}
+      render json: { message: 'User Profile updated successfully!!'}
     else
-      render json: { errors: @current_user.user_profile.errors.full_messages}
+      render json: { errors: user.errors.full_messages}
     end
   end
 
   def destroy
-    user=@current_user.user_profile
+    user = @current_user.user_profile
     if user.destroy
-      render json: { message: 'User Profile deleted'}
+      render json: { message: 'User Profile deleted successfully!!'}
     else
       render json: { errors: @current_user.user_profile.errors.full_messages }
     end
@@ -34,13 +34,13 @@ class UserProfilesController < ApplicationController
 
   private
   def user_profile_param
-    params.permit(:f_name, :l_name, :skills, :experience, :education)
+    params.permit(:f_name, :l_name, :skills, :experience, :education, :image)
   end
 
   private
   def check_for_existing_profile
     if @current_user.user_profile
-      render json: 'Some message about already having a profile'
+      render json: 'You have already created profile'
     end
   end
 end

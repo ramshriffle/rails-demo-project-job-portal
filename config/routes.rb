@@ -9,9 +9,12 @@ Rails.application.routes.draw do
   resource :user_profiles
   resources :jobs
   resources :users_application
-  resources :job_recruiters, only: [:index,:update]
-  get 'view_applied_job/:id', to: 'job_recruiters#view_applied_job'
+  resources :job_seeker, only: [:index]
+  
   get 'view_all_jobs', to: 'job_seeker#view_all_jobs'
-  get 'search_jobs/:job_title', to: 'job_seeker#search_job_by_job_title'
 
+  get 'view_applied_job/:id', to: 'job_recruiters#view_applied_job'
+  put 'accept_or_reject_job_application/:id', to: 'job_recruiters#accept_or_reject_job_application'
+  get 'view_approved_job_application/:id', to: 'job_recruiters#view_approved_job_application'
+  get 'view_rejected_job_application/:id', to: 'job_recruiters#view_rejected_job_application'
 end

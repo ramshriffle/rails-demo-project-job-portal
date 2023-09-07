@@ -2,10 +2,8 @@ class JobsController < ApplicationController
   before_action :check_job_recruiter
   before_action :set_param, only: [:show, :update, :destroy]
  
-
-
   def index
-    jobs=@current_user.jobs.all
+    jobs = @current_user.jobs.all
     render json: jobs
   end
   
@@ -14,7 +12,7 @@ class JobsController < ApplicationController
   end
   
   def create
-    job=@current_user.jobs.new(job_param)
+    job = @current_user.jobs.new(job_param)
     if job.save
       render json: { message:"Job Created!!!", data: job }
     else

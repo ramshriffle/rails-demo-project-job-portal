@@ -1,49 +1,60 @@
 class JobRecruitersController < ApplicationController
-  before_action :check_job_recruiter, only: [:update]
-  before_action :set_param, only: [:view_applied_job, :update]
-
+  before_action :check_job_recruiter, only: [:view_applied_job, :view_approved_job_application, :view_rejected_job_application]
+  before_action :set_param, only: [:accept_or_reject_job_application]
+  before_action :find_all_job_application, only: [:view_applied_job, :view_approved_job_application, :view_rejected_job_application]
+  
   def view_applied_job
-    begin
-      @job= @current_user.jobs.find(params[:id])
-      applied_applications = @job.user_applications
-      if ! applied_applications.blank?
-        render json: applied_applications
-      else
-        render json: "Nobody apply for job"
-      end
-    rescue
-      render json: "Job Not Found"
+    if !@applied_applications.blank?
+      render json: @applied_applications
+    else
+      render json: "Nobody apply for job"
     end
   end
-
-  def index
-    applications = UserApplication.where(status: params[:status])
-    render json: applications
-  end
-
-  def update
-    if @current_user==@application.job.user
+  
+  def accept_or_reject_job_application
+    if @current_user == @application.job.user
       if @application.update(recruiter_param)
         render json: {message: "Application Updated",data: @application}
       else
-        render json: seeker_application.errors.full_messages
+        render json: @application.errors.full_messages
       end
     else
-      render json: "You not permission to accept and reject the job"
+      render json: "You have not permission to accept and reject the job"
     end
+  end
+  
+  def view_approved_job_application
+    applications = @applied_applications.where(status: 'accept')
+    render json: applications
+  end  include ActiveStorage::SetCurrent
+
+  
+  def view_rejected_job_application
+    applications = @applied_applications.where(status: 'reject')
+    render json: applications
   end
   
   private
   def recruiter_param
     params.permit(:status)
   end
-
+  
   private
   def set_param
     begin
       @application= UserApplication.find(params[:id])
     rescue
       render json: "application not Found"
+    end
+  end
+  
+  private
+  def find_all_job_application
+    begin
+      job = @current_user.jobs.find(params[:id])
+      @applied_applications = job.user_applications
+    rescue
+      render json: "Job Not Found"
     end
   end
 end
