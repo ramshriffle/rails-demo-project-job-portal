@@ -4408,3 +4408,167 @@ Processing by JobRecruitersController#update as */*
 Completed 200 OK in 12ms (Views: 0.1ms | ActiveRecord: 2.7ms | Allocations: 4667)
 
 
+Started POST "/user/login" for ::1 at 2023-09-07 10:15:05 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ritik123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 281ms (Views: 2.2ms | ActiveRecord: 0.7ms | Allocations: 28684)
+
+
+Started GET "/users" for ::1 at 2023-09-07 10:15:21 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authenticate_request'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.8ms)
+Completed 200 OK in 11ms (Views: 9.5ms | ActiveRecord: 0.2ms | Allocations: 5089)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+Started GET "/users" for ::1 at 2023-09-07 10:33:16 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authenticate_request'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.2ms)
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 915)
+
+
+  [1m[36mUserApplication Load (0.1ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications" WHERE "user_applications"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUserApplication Load (0.1ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications" WHERE "user_applications"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Started POST "/user/login" for ::1 at 2023-09-07 10:42:11 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ritik123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 264ms (Views: 1.3ms | ActiveRecord: 0.5ms | Allocations: 10924)
+
+
+Started PUT "/job_recruiters/2" for ::1 at 2023-09-07 10:42:45 +0530
+Processing by JobRecruitersController#update as */*
+  Parameters: {"status"=>"accept", "id"=>"2", "job_recruiter"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authenticate_request'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.1ms | Allocations: 1827)
+
+
+  
+NoMethodError (undefined method `job' for nil:NilClass):
+  
+app/controllers/job_recruiters_controller.rb:41:in `update'
+Started PUT "/job_recruiters/8" for ::1 at 2023-09-07 10:43:15 +0530
+Processing by JobRecruitersController#update as */*
+  Parameters: {"status"=>"accept", "id"=>"8", "job_recruiter"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authenticate_request'
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms | Allocations: 1305)
+
+
+  
+NoMethodError (undefined method `job' for nil:NilClass):
+  
+app/controllers/job_recruiters_controller.rb:41:in `update'
+Started PUT "/job_recruiters/8" for ::1 at 2023-09-07 10:43:47 +0530
+Processing by JobRecruitersController#update as */*
+  Parameters: {"status"=>"accept", "id"=>"8", "job_recruiter"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authenticate_request'
+  [1m[36mUserApplication Load (0.1ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications" WHERE "user_applications"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/job_recruiters_controller.rb:60:in `set_param'
+Filter chain halted as :set_param rendered or redirected
+Completed 200 OK in 14ms (Views: 0.8ms | ActiveRecord: 1.5ms | Allocations: 11736)
+
+
+Started PUT "/job_recruiters/2" for ::1 at 2023-09-07 10:43:52 +0530
+Processing by JobRecruitersController#update as */*
+  Parameters: {"status"=>"accept", "id"=>"2", "job_recruiter"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authenticate_request'
+  [1m[36mUserApplication Load (0.1ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications" WHERE "user_applications"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/job_recruiters_controller.rb:60:in `set_param'
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/job_recruiters_controller.rb:41:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/job_recruiters_controller.rb:41:in `update'
+[31mUnpermitted parameters: :id, :job_recruiter. Context: { controller: JobRecruitersController, action: update, request: #<ActionDispatch::Request:0x00007f320002a740>, params: {"status"=>"accept", "controller"=>"job_recruiters", "action"=>"update", "id"=>"2", "job_recruiter"=>{}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/job_recruiters_controller.rb:42:in `update'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/job_recruiters_controller.rb:42:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/job_recruiters_controller.rb:42:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 200 OK in 34ms (Views: 0.7ms | ActiveRecord: 1.1ms | Allocations: 44347)
+
+
+Started PUT "/job_recruiters/2" for ::1 at 2023-09-07 10:44:13 +0530
+Processing by JobRecruitersController#update as */*
+  Parameters: {"status"=>"reject", "id"=>"2", "job_recruiter"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authenticate_request'
+  [1m[36mUserApplication Load (0.2ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications" WHERE "user_applications"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/job_recruiters_controller.rb:60:in `set_param'
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/job_recruiters_controller.rb:41:in `update'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/job_recruiters_controller.rb:41:in `update'
+[31mUnpermitted parameters: :id, :job_recruiter. Context: { controller: JobRecruitersController, action: update, request: #<ActionDispatch::Request:0x00007f3208820cd0>, params: {"status"=>"reject", "controller"=>"job_recruiters", "action"=>"update", "id"=>"2", "job_recruiter"=>{}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/job_recruiters_controller.rb:42:in `update'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/job_recruiters_controller.rb:42:in `update'
+  [1m[36mUserApplication Update (0.3ms)[0m  [1m[33mUPDATE "user_applications" SET "status" = ?, "updated_at" = ? WHERE "user_applications"."id" = ?[0m  [["status", "reject"], ["updated_at", "2023-09-07 05:14:13.470091"], ["id", 2]]
+  ↳ app/controllers/job_recruiters_controller.rb:42:in `update'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/job_recruiters_controller.rb:42:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.22ms)
+Completed 200 OK in 19ms (Views: 0.6ms | ActiveRecord: 3.3ms | Allocations: 5614)
+
+
+Started POST "/user/login" for ::1 at 2023-09-07 10:44:47 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ankit123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ankit123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 256ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 1109)
+
+
+Started PUT "/job_recruiters/2" for ::1 at 2023-09-07 10:45:09 +0530
+Processing by JobRecruitersController#update as */*
+  Parameters: {"status"=>"accept", "id"=>"2", "job_recruiter"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authenticate_request'
+  [1m[36mUserApplication Load (0.1ms)[0m  [1m[34mSELECT "user_applications".* FROM "user_applications" WHERE "user_applications"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/job_recruiters_controller.rb:60:in `set_param'
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/job_recruiters_controller.rb:41:in `update'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/job_recruiters_controller.rb:41:in `update'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 2146)
+
+
+Started POST "/user/login" for ::1 at 2023-09-07 10:46:19 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ram123@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ram123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 261ms (Views: 1.1ms | ActiveRecord: 1.1ms | Allocations: 11252)
+
+
+Started PUT "/job_recruiters/2" for ::1 at 2023-09-07 10:46:36 +0530
+Processing by JobRecruitersController#update as */*
+  Parameters: {"status"=>"accept", "id"=>"2", "job_recruiter"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `authenticate_request'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Filter chain halted as :check_job_recruiter rendered or redirected
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1283)
+
+
