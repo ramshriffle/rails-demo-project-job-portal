@@ -1,19 +1,16 @@
 class UserApplication < ApplicationRecord
   belongs_to :job
   belongs_to :user
+  has_one_attached :resume
 
-  validates :status, presence: true, inclusion: {in: %w(applied accept reject)}
-  validate :only_seeker_apply_for_jobs
-  # validates :user_id, uniqueness: {scope: :job_id, message: "You have already applied for this job"}
+  validates :status, inclusion: {in: %w(applied accept reject)}
+  
+  # validate :only_seeker_apply_for_jobs
 
-  private
-  def only_seeker_apply_for_jobs
-    unless user.type == "JobSeeker"
-        errors.add(:base, "Only seeker have permission for apply the job.")      
-    end
-  end
-
-  def check 
-    
-  end
+  # private
+  # def only_seeker_apply_for_jobs
+  #   unless user.type == "JobSeeker"
+  #       errors.add(:base, "Only seeker have permission for apply the job.")      
+  #   end
+  # end
 end

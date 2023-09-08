@@ -3,12 +3,9 @@ class Job < ApplicationRecord
   has_many :user_applications, dependent: :destroy
 
   validates :job_title, :description, :location, :salary, presence: true
-  validate :recruiter_only_post_jobs#, on: :create
+  scope :search_job_by_job_title, ->(title) {where("job_title LIKE ?", "#{title}%")}
 
-  private
-  def recruiter_only_post_jobs
-    unless user.type == "JobRecruiter"
-        errors.add(:base, "Only Recruiter have permission to post jobs.")      
-    end
-  end
+  # def self.search_job_by_job_title(title)
+  #   where("job_title LIKE ?", "#{title}%")
+  # end
 end

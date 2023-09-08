@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_request, only: [:create, :login]
-
+  
   def login
     user = User.find_by_email(params[:email])
     if user&.authenticate(params[:password])
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       render json: { error: "Please Check your Email And Password....." }
     end
   end
-
+  
   def show
     render json: @current_user
   end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if user.save    
       render json: { message:"User Created!!!", data: user }
     else
-      render json: user.errors.full_messages
+      render json: user.errors.full_meyyyyyssages
     end
   end
   
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       render json: { errors: @current_user.errors.full_messages }
     end
   end
-    
+  
   private
   def user_params
     params.permit(:user_name, :email, :password, :type)
