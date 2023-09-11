@@ -16,11 +16,11 @@ class UsersController < ApplicationController
   end
   
   def create
-    user = User.new(user_params)
-    if user.save    
-      render json: { message:"User Created!!!", data: user }
+    @user = User.new(user_params)
+    if @user.save    
+      render json: { message:"User Created!!!", data: @user }
     else
-      render json: user.errors.full_meyyyyyssages
+      render json: @user.errors.full_messages
     end
   end
   
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   
   def destroy
     if @current_user.destroy
-      render json: { message: 'User deleted' }
+      render json: { message: 'User deleted successfully' }
     else
       render json: { errors: @current_user.errors.full_messages }
     end

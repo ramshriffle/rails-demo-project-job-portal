@@ -1,5 +1,5 @@
 class JobRecruitersController < ApplicationController
-  before_action :check_job_recruiter, only: [:view_applied_job, :view_approved_job_application, :view_rejected_job_application]
+  before_action :check_job_recruiter
   before_action :set_param, only: [:accept_or_reject_job_application]
   before_action :find_all_job_application, only: [:view_applied_job, :view_approved_job_application, :view_rejected_job_application]
   
@@ -26,14 +26,22 @@ class JobRecruitersController < ApplicationController
   end
   
   def view_approved_job_application
-    applications = @applied_applications.where(status: 'accept')
-    render json: applications
+    applications = @applied_applications.status_accept
+    if applications.empty?
+      render json: "You are not accept any job application"
+    else
+      render json: applications
+    end
   end 
   
   
   def view_rejected_job_application
-    applications = @applied_applications.where(status: 'reject')
-    render json: applications
+    applications = @applied_applications.status_reject
+    if applications.empty?
+      render json: "You are not reject any job application"
+    else
+      render json: applications
+    end
   end
   
   private
@@ -44,7 +52,7 @@ class JobRecruitersController < ApplicationController
   private
   def set_param
     @application= UserApplication.find_by_id(params[:id])
-    unless @application
+    if @application.nil?
       render json: "Job Application not Found"
     end
   end
@@ -52,8 +60,8 @@ class JobRecruitersController < ApplicationController
   private
   def find_all_job_application
     begin
-    job = @current_user.jobs.find_by_id(params[:id])
-    @applied_applications = job.user_applications
+      job = @current_user.jobs.find_by_id(params[:id])
+      @applied_applications = job.user_applications
     rescue
       render json: "Job Not Found"
     end

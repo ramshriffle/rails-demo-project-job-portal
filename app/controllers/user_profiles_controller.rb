@@ -10,7 +10,7 @@ class UserProfilesController < ApplicationController
   end
   
   def create
-    profile=@current_user.build_user_profile(user_profile_param)
+    profile = @current_user.build_user_profile(user_profile_param)
     if profile.save 
       render json: profile 
     else
@@ -43,7 +43,7 @@ class UserProfilesController < ApplicationController
   
   private
   def check_for_existing_profile
-    if @current_user.user_profile
+    unless @current_user.user_profile.nil?
       render json: 'You have already created profile'
     end
   end

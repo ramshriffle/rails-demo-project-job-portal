@@ -1,6 +1,6 @@
 class UsersApplicationController < ApplicationController
   before_action :check_job_seeker
-  before_action :set_param, only: [:update, :destroy]
+  before_action :set_param, only: [:destroy]
   before_action :has_applied?, only: [:create]
   
   # JobSeeker(current_user) can view his all applied job application
@@ -12,7 +12,7 @@ class UsersApplicationController < ApplicationController
   def create
     application = @current_user.user_applications.new(user_application_param) 
     if application.save
-      render json: {message: "Successfully apply for the job", data: application}
+      render json: application
     else
       render json: {errors: application.errors.full_messages}
     end
@@ -26,14 +26,6 @@ class UsersApplicationController < ApplicationController
     end
   end
   
-  def update
-    if @user_application.update(user_application_param)
-      render json: @user_application
-    else
-      render json: { errors: @user_application.errors.full_messages }
-    end
-  end
-  
   private
   def user_application_param
     params.permit(:job_id, :resume) 
@@ -42,7 +34,7 @@ class UsersApplicationController < ApplicationController
   private
   def set_param
     @user_application = @current_user.user_applications.find_by_id(params[:id])
-    unless @user_application
+    if @user_application.nil?
       render json: "Seeker not applied"
     end
   end

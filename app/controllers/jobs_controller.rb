@@ -44,7 +44,7 @@ class JobsController < ApplicationController
   private
   def set_param
     @job= @current_user.jobs.find_by_id(params[:id])
-    unless @job
+    if @job.nil?
       render json: "Job not Found"
     end
   end
