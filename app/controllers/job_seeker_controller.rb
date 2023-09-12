@@ -1,4 +1,5 @@
-class JobSeekerController < ApplicationController
+class JobSeekersController < ApplicationController
+  # search all user 
   def index
     if params[:f_name].present?
       users = UserProfile.search_user_by_name(params[:f_name])

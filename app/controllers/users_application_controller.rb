@@ -1,7 +1,6 @@
 class UsersApplicationController < ApplicationController
   before_action :check_job_seeker
   before_action :set_param, only: [:destroy]
-  before_action :has_applied?, only: [:create]
   
   # JobSeeker(current_user) can view his all applied job application
   def index
@@ -22,7 +21,7 @@ class UsersApplicationController < ApplicationController
     if @user_application.destroy
       render json: {message: "Application withdraw successfully"}
     else
-      render json: {errors: @user_application.errors.full_messages}
+      render json: @user_application.errors.full_messages
     end
   end
   
@@ -36,13 +35,6 @@ class UsersApplicationController < ApplicationController
     @user_application = @current_user.user_applications.find_by_id(params[:id])
     if @user_application.nil?
       render json: "Seeker not applied"
-    end
-  end
-  
-  private
-  def has_applied?
-    if UserApplication.where(user_id: @current_user.id, job_id: params[:job_id]).any?
-      render json: "You have already applied"
     end
   end
 end

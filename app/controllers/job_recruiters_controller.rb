@@ -1,7 +1,7 @@
 class JobRecruitersController < ApplicationController
   before_action :check_job_recruiter
   before_action :set_param, only: [:accept_or_reject_job_application]
-  before_action :find_all_job_application, only: [:view_applied_job, :view_approved_job_application, :view_rejected_job_application]
+  before_action :find_all_job_application, only: [:view_applied_job, :view_accepted_job_application, :view_rejected_job_application]
   
   #JobRecriuter(@current_user) can view all applied job application
   #on his particular job
@@ -25,7 +25,7 @@ class JobRecruitersController < ApplicationController
     end
   end
   
-  def view_approved_job_application
+  def view_accepted_job_application
     applications = @applied_applications.status_accept
     if applications.empty?
       render json: "You are not accept any job application"

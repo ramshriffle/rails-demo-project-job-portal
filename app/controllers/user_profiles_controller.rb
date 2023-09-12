@@ -1,12 +1,9 @@
 class UserProfilesController < ApplicationController
   before_action :check_for_existing_profile, only: [:create]
+  before_action :set_param, only: [:show, :update, :destroy]
   
   def show
-    if !@current_user.user_profile.nil?
-    render json: @current_user.user_profile
-    else
-      render json: "User not create his profile"
-    end
+    render json: @user_profile
   end
   
   def create
@@ -19,20 +16,18 @@ class UserProfilesController < ApplicationController
   end
   
   def update
-    user = @current_user.user_profile
-    if user.update(user_profile_param)
-      render json: user
+    if @user_profile.update(user_profile_param)
+      render json: @user_profile
     else
-      render json: { errors: user.errors.full_messages}
+      render json: { errors: @user_profile.full_messages}
     end
   end
   
   def destroy
-    user = @current_user.user_profile
-    if user.destroy
+    if @user_profile.destroy
       render json: { message: 'User Profile deleted successfully!!'}
     else
-      render json: { errors: @current_user.user_profile.errors.full_messages }
+      render json: { errors: @user_profile.errors.full_messages }
     end
   end
   
@@ -44,7 +39,15 @@ class UserProfilesController < ApplicationController
   private
   def check_for_existing_profile
     unless @current_user.user_profile.nil?
-      render json: 'You have already created profile'
+      render json: 'You have already create profile'
+    end
+  end
+
+  private
+  def set_param
+    @user_profile=@current_user.user_profile
+    if @user_profile.nil?
+      render json: "User not create profile"
     end
   end
 end
