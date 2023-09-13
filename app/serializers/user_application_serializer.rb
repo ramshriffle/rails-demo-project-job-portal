@@ -1,6 +1,6 @@
 class UserApplicationSerializer < ActiveModel::Serializer
   attributes :id, :status, :seeker, :resume
-  # belongs_to :job
+  belongs_to :job
 
   def seeker
     object.user.user_profile.f_name

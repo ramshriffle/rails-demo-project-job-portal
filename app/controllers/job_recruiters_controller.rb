@@ -16,12 +16,12 @@ class JobRecruitersController < ApplicationController
   def accept_or_reject_job_application
     if @current_user == @application.job.user
       if @application.update(recruiter_param)
-        render json: {message: "Application Updated",data: @application}
+        render json: @application
       else
         render json: @application.errors.full_messages
       end
     else
-      render json: "You have not permission to accept and reject the job"
+      render json: "You have not permission to accept or reject the job"
     end
   end
   
@@ -52,7 +52,7 @@ class JobRecruitersController < ApplicationController
   private
   def set_param
     @application= UserApplication.find_by_id(params[:id])
-    if @application.nil?
+    unless @application
       render json: "Job Application not Found"
     end
   end

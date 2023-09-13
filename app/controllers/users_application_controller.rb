@@ -1,7 +1,8 @@
 class UsersApplicationController < ApplicationController
   before_action :check_job_seeker
   before_action :set_param, only: [:destroy]
-  
+  before_action :has_applied?, only: [:create]
+
   # JobSeeker(current_user) can view his all applied job application
   def index
     seeker_all_applications=@current_user.user_applications.all
@@ -33,8 +34,15 @@ class UsersApplicationController < ApplicationController
   private
   def set_param
     @user_application = @current_user.user_applications.find_by_id(params[:id])
-    if @user_application.nil?
+    unless @user_application
       render json: "Seeker not applied"
+    end
+  end
+
+  private
+  def has_applied?
+    if UserApplication.where(user_id: @current_user.id, job_id: params[:job_id]).any?
+      render json: "You have already applied for this job"
     end
   end
 end
