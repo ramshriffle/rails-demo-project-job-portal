@@ -15,7 +15,7 @@ class JobSeekersController < ApplicationController
       jobs = Job.search_job_by_title(params[:job_title])
       render json: jobs
     else
-      render json: Job.all
+      render json: Job.all.includes(:user)
     end
   end
 end

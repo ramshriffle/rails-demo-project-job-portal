@@ -24085,3 +24085,571 @@ Content-Transfer-Encoding: 7bit
 Completed 200 OK in 4378ms (Views: 3.8ms | ActiveRecord: 2.9ms | Allocations: 64361)
 
 
+Started GET "/admin" for ::1 at 2023-09-14 11:12:19 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/admin"):
+  
+Started GET "/admin/admin_users" for ::1 at 2023-09-15 12:48:22 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/admin/admin_users"):
+  
+Started GET "/user_profiles" for ::1 at 2023-09-15 15:08:28 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 200 OK in 14ms (Views: 0.9ms | ActiveRecord: 0.7ms | Allocations: 11263)
+
+
+Started GET "/user_profiles" for ::1 at 2023-09-15 15:08:34 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 896)
+
+
+Started POST "/user/login" for ::1 at 2023-09-15 15:08:40 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ram123@gmail.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ram123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 278ms (Views: 1.3ms | ActiveRecord: 0.2ms | Allocations: 20972)
+
+
+Started GET "/user_profiles" for ::1 at 2023-09-15 15:08:49 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUserProfile Load (0.2ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:48:in `set_param'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 30], ["record_type", "UserProfile"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_profile_serializer.rb:5:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 42], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_profile_serializer.rb:5:in `image'
+[active_model_serializers] [36m  Disk Storage (2.1ms) [0m[34mGenerated URL for file at key: d8o2r8eto4qg1vxghpc4h3dndsxv (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaRGh2TW5JNFpYUnZOSEZuTVhaNFoyaHdZelJvTTJSdVpITjRkZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWhZQmFXNXNhVzVsT3lCbWFXeGxibUZ0WlQwaWMzUnZZMnN0ZG1WamRHOXlMV2x5YjI1dFlXNHRZWEowTFdSbGMybG5iaTEyWldOMGIzSXRhV052YmkxMFpXMXdiR0YwWlMxaWIyUjVMVzFsZEdGc0xYZGxZWEJ2YmkxdFlYTnJMV0Z5Ylc5MWNpMXpjR1ZqYVdGc0xXZDFiaTF3YjNkbGNpMWhjbTE1TFRJeU56VXlNakU0TmpjdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR6ZEc5amF5MTJaV04wYjNJdGFYSnZibTFoYmkxaGNuUXRaR1Z6YVdkdUxYWmxZM1J2Y2kxcFkyOXVMWFJsYlhCc1lYUmxMV0p2WkhrdGJXVjBZV3d0ZDJWaGNHOXVMVzFoYzJzdFlYSnRiM1Z5TFhOd1pXTnBZV3d0WjNWdUxYQnZkMlZ5TFdGeWJYa3RNakkzTlRJeU1UZzJOeTVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkRvUmMyVnlkbWxqWlY5dVlXMWxPZ3BzYjJOaGJBPT0iLCJleHAiOiIyMDIzLTA5LTE1VDA5OjQzOjQ5LjUzM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--3fa793f6b49cbce7a2d78172cb77458910c41a4a/stock-vector-ironman-art-design-vector-icon-template-body-metal-weapon-mask-armour-special-gun-power-army-2275221867.jpg)[0m
+[active_model_serializers] Rendered UserProfileSerializer with ActiveModelSerializers::Adapter::Attributes (61.18ms)
+Completed 200 OK in 108ms (Views: 66.2ms | ActiveRecord: 2.7ms | Allocations: 80160)
+
+
+Started GET "/users" for ::1 at 2023-09-15 15:09:02 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.64ms)
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 0.1ms | Allocations: 2142)
+
+
+Started GET "/users" for ::1 at 2023-09-15 15:33:17 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.27ms)
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.6ms | Allocations: 1139)
+
+
+Started GET "/jobs/10" for ::1 at 2023-09-15 15:33:48 +0530
+Processing by JobsController#show as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 22], ["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/jobs_controller.rb:46:in `set_param'
+[active_model_serializers]   [1m[36mUserProfile Load (0.2ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers] Rendered JobSerializer with ActiveModelSerializers::Adapter::Attributes (1.61ms)
+Completed 200 OK in 24ms (Views: 2.6ms | ActiveRecord: 0.9ms | Allocations: 23577)
+
+
+Started GET "/jobs" for ::1 at 2023-09-15 15:33:55 +0530
+Processing by JobsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ?[0m  [["user_id", 22]]
+  ↳ app/controllers/jobs_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.5ms)
+Completed 200 OK in 6ms (Views: 3.1ms | ActiveRecord: 0.4ms | Allocations: 2599)
+
+
+Started POST "/user/login" for ::1 at 2023-09-15 15:34:48 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ritik123@gmail.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 269ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 885)
+
+
+Started GET "/jobs" for ::1 at 2023-09-15 15:35:20 +0530
+Processing by JobsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ?[0m  [["user_id", 21]]
+  ↳ app/controllers/jobs_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.57ms)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.3ms | Allocations: 2506)
+
+
+Started PUT "/jobs/8" for ::1 at 2023-09-15 15:36:16 +0530
+Processing by JobsController#update as */*
+  Parameters: {"job_title"=>"Hr1", "id"=>"8", "job"=>{"job_title"=>"Hr1"}}
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Filter chain halted as :authenticate_request rendered or redirected
+Completed 422 Unprocessable Entity in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 594)
+
+
+Started GET "/jobs" for ::1 at 2023-09-15 15:36:30 +0530
+Processing by JobsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ?[0m  [["user_id", 21]]
+  ↳ app/controllers/jobs_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.94ms)
+Completed 200 OK in 6ms (Views: 3.6ms | ActiveRecord: 0.3ms | Allocations: 2502)
+
+
+Started PUT "/jobs/8" for ::1 at 2023-09-15 15:36:41 +0530
+Processing by JobsController#update as */*
+  Parameters: {"job_title"=>"Hr1", "id"=>"8", "job"=>{"job_title"=>"Hr1"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 21], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/jobs_controller.rb:46:in `set_param'
+[31mUnpermitted parameters: :id, :job. Context: { controller: JobsController, action: update, request: #<ActionDispatch::Request:0x00007f5408edc958>, params: {"job_title"=>"Hr1", "controller"=>"jobs", "action"=>"update", "id"=>"8", "job"=>{"job_title"=>"Hr1"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/jobs_controller.rb:24:in `update'
+  [1m[36mJob Update (0.2ms)[0m  [1m[33mUPDATE "jobs" SET "job_title" = ?, "updated_at" = ? WHERE "jobs"."id" = ?[0m  [["job_title", "Hr1"], ["updated_at", "2023-09-15 10:06:41.293954"], ["id", 8]]
+  ↳ app/controllers/jobs_controller.rb:24:in `update'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/jobs_controller.rb:24:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 2.7ms | Allocations: 4546)
+
+
+Started GET "/jobs" for ::1 at 2023-09-15 15:36:47 +0530
+Processing by JobsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ?[0m  [["user_id", 21]]
+  ↳ app/controllers/jobs_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.74ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.4ms | Allocations: 2504)
+
+
+Started PUT "/jobs/8" for ::1 at 2023-09-15 15:37:35 +0530
+Processing by JobsController#update as */*
+  Parameters: {"job_title"=>"Hr1", "id"=>"8", "job"=>{"job_title"=>"Hr1"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 21], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/jobs_controller.rb:46:in `set_param'
+[31mUnpermitted parameters: :id, :job. Context: { controller: JobsController, action: update, request: #<ActionDispatch::Request:0x00007f53f401d1d8>, params: {"job_title"=>"Hr1", "controller"=>"jobs", "action"=>"update", "id"=>"8", "job"=>{"job_title"=>"Hr1"}} }[0m
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers] Rendered JobSerializer with ActiveModelSerializers::Adapter::Attributes (12.62ms)
+Completed 200 OK in 33ms (Views: 13.1ms | ActiveRecord: 2.4ms | Allocations: 23673)
+
+
+Started PUT "/jobs/8" for ::1 at 2023-09-15 15:38:08 +0530
+Processing by JobsController#update as */*
+  Parameters: {"job_title"=>"Hr1", "id"=>"8", "job"=>{"job_title"=>"Hr1"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 21], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/jobs_controller.rb:46:in `set_param'
+[31mUnpermitted parameters: :id, :job. Context: { controller: JobsController, action: update, request: #<ActionDispatch::Request:0x00007f53f8a09058>, params: {"job_title"=>"Hr1", "controller"=>"jobs", "action"=>"update", "id"=>"8", "job"=>{"job_title"=>"Hr1"}} }[0m
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers] Rendered JobSerializer with ActiveModelSerializers::Adapter::Attributes (11.42ms)
+Completed 200 OK in 33ms (Views: 11.2ms | ActiveRecord: 2.4ms | Allocations: 23622)
+
+
+Started PUT "/jobs/8" for ::1 at 2023-09-15 15:38:22 +0530
+Processing by JobsController#update as */*
+  Parameters: {"job_title"=>"Hr1", "id"=>"8", "job"=>{"job_title"=>"Hr1"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 21], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/jobs_controller.rb:46:in `set_param'
+[31mUnpermitted parameters: :id, :job. Context: { controller: JobsController, action: update, request: #<ActionDispatch::Request:0x00007f53f0063790>, params: {"job_title"=>"Hr1", "controller"=>"jobs", "action"=>"update", "id"=>"8", "job"=>{"job_title"=>"Hr1"}} }[0m
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 1.8ms | Allocations: 16302)
+
+
+  
+NameError (uninitialized constant JobsController::JobdSerializer
+Did you mean?  JobSerializer):
+  
+app/controllers/jobs_controller.rb:25:in `update'
+Started PUT "/jobs/8" for ::1 at 2023-09-15 15:38:32 +0530
+Processing by JobsController#update as */*
+  Parameters: {"job_title"=>"Hr1", "id"=>"8", "job"=>{"job_title"=>"Hr1"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 21], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/jobs_controller.rb:46:in `set_param'
+[31mUnpermitted parameters: :id, :job. Context: { controller: JobsController, action: update, request: #<ActionDispatch::Request:0x00007f53f8ef7740>, params: {"job_title"=>"Hr1", "controller"=>"jobs", "action"=>"update", "id"=>"8", "job"=>{"job_title"=>"Hr1"}} }[0m
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers] Rendered JobSerializer with ActiveModelSerializers::Adapter::Attributes (9.77ms)
+Completed 200 OK in 29ms (Views: 9.5ms | ActiveRecord: 2.5ms | Allocations: 23598)
+
+
+Started PUT "/jobs/8" for ::1 at 2023-09-15 15:38:48 +0530
+  
+SyntaxError (/home/hp/Music/final/job_portal/app/controllers/jobs_controller.rb:25: syntax error, unexpected label
+      render json:serializer: JobSerializer#{ message:"Job...
+                  ^~~~~~~~~~~
+):
+  
+app/controllers/jobs_controller.rb:25: syntax error, unexpected label
+app/controllers/jobs_controller.rb:25: syntax error, unexpected label
+app/controllers/jobs_controller.rb:25: syntax error, unexpected label
+Started PUT "/jobs/8" for ::1 at 2023-09-15 15:38:59 +0530
+  
+SyntaxError (/home/hp/Music/final/job_portal/app/controllers/jobs_controller.rb:25: syntax error, unexpected label
+      render json: serializer: JobSerializer#{ message:"Job...
+                   ^~~~~~~~~~~
+):
+  
+app/controllers/jobs_controller.rb:25: syntax error, unexpected label
+app/controllers/jobs_controller.rb:25: syntax error, unexpected label
+app/controllers/jobs_controller.rb:25: syntax error, unexpected label
+Started PUT "/jobs/8" for ::1 at 2023-09-15 15:39:06 +0530
+Processing by JobsController#update as */*
+  Parameters: {"job_title"=>"Hr1", "id"=>"8", "job"=>{"job_title"=>"Hr1"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 21], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/jobs_controller.rb:46:in `set_param'
+[31mUnpermitted parameters: :id, :job. Context: { controller: JobsController, action: update, request: #<ActionDispatch::Request:0x00007f53f4662ca0>, params: {"job_title"=>"Hr1", "controller"=>"jobs", "action"=>"update", "id"=>"8", "job"=>{"job_title"=>"Hr1"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 24ms (Views: 1.1ms | ActiveRecord: 1.8ms | Allocations: 16462)
+
+
+Started PUT "/jobs/8" for ::1 at 2023-09-15 15:39:18 +0530
+Processing by JobsController#update as */*
+  Parameters: {"job_title"=>"Hr1", "id"=>"8", "job"=>{"job_title"=>"Hr1"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 21], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/jobs_controller.rb:46:in `set_param'
+[31mUnpermitted parameters: :id, :job. Context: { controller: JobsController, action: update, request: #<ActionDispatch::Request:0x00007f54043c25d0>, params: {"job_title"=>"Hr1", "controller"=>"jobs", "action"=>"update", "id"=>"8", "job"=>{"job_title"=>"Hr1"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 31ms (Views: 1.0ms | ActiveRecord: 1.8ms | Allocations: 16286)
+
+
+Started PUT "/jobs/8" for ::1 at 2023-09-15 15:40:16 +0530
+Processing by JobsController#update as */*
+  Parameters: {"job_title"=>"Hr1", "id"=>"8", "job"=>{"job_title"=>"Hr1"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 21], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/jobs_controller.rb:46:in `set_param'
+[31mUnpermitted parameters: :id, :job. Context: { controller: JobsController, action: update, request: #<ActionDispatch::Request:0x00007f5408d66790>, params: {"job_title"=>"Hr1", "controller"=>"jobs", "action"=>"update", "id"=>"8", "job"=>{"job_title"=>"Hr1"}} }[0m
+[active_model_serializers] Rendered UserProfileSerializer with ActiveModelSerializers::Adapter::Attributes (5.6ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 2.7ms | Allocations: 18312)
+
+
+  
+NoMethodError (undefined method `f_name' for #<Job id: 8, job_title: "Hr1", description: "We need 2 year experioenced Hr", location: "Bengaluru", salary: 0.3e5, user_id: 21, created_at: "2023-09-13 11:16:07.524612000 +0000", updated_at: "2023-09-15 10:06:41.293954000 +0000">):
+  
+app/controllers/jobs_controller.rb:25:in `update'
+Started PUT "/jobs/8" for ::1 at 2023-09-15 15:40:52 +0530
+Processing by JobsController#update as */*
+  Parameters: {"job_title"=>"Hr1", "id"=>"8", "job"=>{"job_title"=>"Hr1"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 21], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/jobs_controller.rb:46:in `set_param'
+[31mUnpermitted parameters: :id, :job. Context: { controller: JobsController, action: update, request: #<ActionDispatch::Request:0x00007f53f8f79808>, params: {"job_title"=>"Hr1", "controller"=>"jobs", "action"=>"update", "id"=>"8", "job"=>{"job_title"=>"Hr1"}} }[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 22ms (Views: 0.9ms | ActiveRecord: 1.7ms | Allocations: 16219)
+
+
+Started GET "/users" for ::1 at 2023-09-15 15:58:17 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.5ms | Allocations: 12085)
+
+
+  
+NoMethodError (undefined method `includes' for #<JobRecruiter id: 22, user_name: "ramkushwah", password_digest: [FILTERED], email: "ram123@gmail.com", type: "JobRecruiter", created_at: "2023-09-13 11:12:45.969985000 +0000", updated_at: "2023-09-13 11:12:45.969985000 +0000">):
+  
+app/controllers/users_controller.rb:15:in `show'
+Started GET "/view_all_jobs" for ::1 at 2023-09-15 16:01:25 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?)[0m  [["id", 21], ["id", 22]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (12.29ms)
+Completed 200 OK in 43ms (Views: 22.4ms | ActiveRecord: 2.5ms | Allocations: 30147)
+
+
+Started GET "/view_all_jobs" for ::1 at 2023-09-15 16:02:09 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"job_title"=>"h"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE (job_title LIKE 'h%')[0m
+  ↳ app/controllers/job_seekers_controller.rb:16:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.78ms)
+Completed 200 OK in 8ms (Views: 5.2ms | ActiveRecord: 0.5ms | Allocations: 3833)
+
+
+Started GET "/view_all_jobs" for ::1 at 2023-09-15 16:02:19 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?)[0m  [["id", 21], ["id", 22]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.12ms)
+Completed 200 OK in 14ms (Views: 10.3ms | ActiveRecord: 0.9ms | Allocations: 4093)
+
+
+Started GET "/view_all_jobs" for ::1 at 2023-09-15 16:02:30 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"job_title"=>"s"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE (job_title LIKE 's%')[0m
+  ↳ app/controllers/job_seekers_controller.rb:16:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.48ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.5ms | Allocations: 4302)
+
+
+Started GET "/view_all_jobs" for ::1 at 2023-09-15 16:02:39 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs"[0m
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?)[0m  [["id", 21], ["id", 22]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.03ms)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 0.7ms | Allocations: 4092)
+
+
+Started GET "/users" for ::1 at 2023-09-15 16:05:28 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+[active_model_serializers]   [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ?[0m  [["user_id", 22]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `show'
+[active_model_serializers]   [1m[36mUserProfile Load (0.2ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (24.2ms)
+Completed 200 OK in 44ms (Views: 28.7ms | ActiveRecord: 2.4ms | Allocations: 31039)
+
+
+Started GET "/users" for ::1 at 2023-09-15 16:05:48 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+[active_model_serializers]   [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ?[0m  [["user_id", 21]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:15:in `show'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:5:in `recruiter'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (4.26ms)
+Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 0.3ms | Allocations: 2797)
+
+
+Started GET "/jobs/10" for ::1 at 2023-09-15 16:08:14 +0530
+Processing by JobsController#show as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.7ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 22], ["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/jobs_controller.rb:46:in `set_param'
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 2.7ms | Allocations: 18103)
+
+
+  
+SyntaxError (/home/hp/Music/final/job_portal/app/serializers/job_serializer.rb:5: syntax error, unexpected ':', expecting `end'
+    id: object.user.id
+      ^
+/home/hp/Music/final/job_portal/app/serializers/job_serializer.rb:6: syntax error, unexpected ':', expecting `end'
+    name: object.user.user_name
+        ^
+):
+  
+app/serializers/job_serializer.rb:5: syntax error, unexpected ':', expecting `end'
+app/serializers/job_serializer.rb:6: syntax error, unexpected ':', expecting `end'
+app/serializers/job_serializer.rb:5: syntax error, unexpected ':', expecting `end'
+app/serializers/job_serializer.rb:6: syntax error, unexpected ':', expecting `end'
+app/serializers/job_serializer.rb:5: syntax error, unexpected ':', expecting `end'
+app/serializers/job_serializer.rb:6: syntax error, unexpected ':', expecting `end'
+app/controllers/jobs_controller.rb:11:in `show'
+Started GET "/jobs/10" for ::1 at 2023-09-15 16:08:52 +0530
+Processing by JobsController#show as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 22], ["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/jobs_controller.rb:46:in `set_param'
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 1.7ms | Allocations: 18108)
+
+
+  
+SyntaxError (/home/hp/Music/final/job_portal/app/serializers/job_serializer.rb:7: syntax error, unexpected local variable or method, expecting '}'
+    name: object.user.user_name
+    ^~~~
+/home/hp/Music/final/job_portal/app/serializers/job_serializer.rb:8: syntax error, unexpected '}', expecting `end'):
+  
+app/serializers/job_serializer.rb:7: syntax error, unexpected local variable or method, expecting '}'
+app/serializers/job_serializer.rb:8: syntax error, unexpected '}', expecting `end'
+app/serializers/job_serializer.rb:7: syntax error, unexpected local variable or method, expecting '}'
+app/serializers/job_serializer.rb:8: syntax error, unexpected '}', expecting `end'
+app/serializers/job_serializer.rb:7: syntax error, unexpected local variable or method, expecting '}'
+app/serializers/job_serializer.rb:8: syntax error, unexpected '}', expecting `end'
+app/controllers/jobs_controller.rb:11:in `show'
+Started GET "/jobs/10" for ::1 at 2023-09-15 16:09:23 +0530
+Processing by JobsController#show as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 22], ["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/jobs_controller.rb:46:in `set_param'
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 1.7ms | Allocations: 18139)
+
+
+  
+SyntaxError (/home/hp/Music/final/job_portal/app/serializers/job_serializer.rb:7: syntax error, unexpected local variable or method, expecting '}'
+    user_name: object.user.user_name
+    ^~~~~~~~~
+/home/hp/Music/final/job_portal/app/serializers/job_serializer.rb:8: syntax error, unexpected '}', expecting `end'):
+  
+app/serializers/job_serializer.rb:7: syntax error, unexpected local variable or method, expecting '}'
+app/serializers/job_serializer.rb:8: syntax error, unexpected '}', expecting `end'
+app/serializers/job_serializer.rb:7: syntax error, unexpected local variable or method, expecting '}'
+app/serializers/job_serializer.rb:8: syntax error, unexpected '}', expecting `end'
+app/serializers/job_serializer.rb:7: syntax error, unexpected local variable or method, expecting '}'
+app/serializers/job_serializer.rb:8: syntax error, unexpected '}', expecting `end'
+app/controllers/jobs_controller.rb:11:in `show'
+Started GET "/jobs/10" for ::1 at 2023-09-15 16:09:39 +0530
+Processing by JobsController#show as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 22], ["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/jobs_controller.rb:46:in `set_param'
+[active_model_serializers] Rendered JobSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 200 OK in 23ms (Views: 1.5ms | ActiveRecord: 1.6ms | Allocations: 17844)
+
+
+Started GET "/jobs/10" for ::1 at 2023-09-15 16:09:53 +0530
+Processing by JobsController#show as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? AND "jobs"."id" = ? LIMIT ?[0m  [["user_id", 22], ["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/jobs_controller.rb:46:in `set_param'
+[active_model_serializers] Rendered JobSerializer with ActiveModelSerializers::Adapter::Attributes (0.31ms)
+Completed 200 OK in 25ms (Views: 1.8ms | ActiveRecord: 1.6ms | Allocations: 17839)
+
+
+Started POST "/user/login" for ::1 at 2023-09-15 19:00:40 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ritik123@gmail.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 263ms (Views: 1.5ms | ActiveRecord: 0.6ms | Allocations: 3360)
+
+
+Started GET "/user_profiles" for ::1 at 2023-09-15 19:00:56 +0530
+Processing by UserProfilesController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/final/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/user_profiles_controller.rb:48:in `set_param'
+[active_model_serializers]   [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 29], ["record_type", "UserProfile"], ["name", "image"], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_profile_serializer.rb:5:in `image'
+[active_model_serializers]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 41], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_profile_serializer.rb:5:in `image'
+[active_model_serializers] [36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: dssg7gz0ipe79dnh0g3p5cn8mkdy (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSE56WnpkbmVqQnBjR1UzT1dSdWFEQm5NM0ExWTI0NGJXdGtlUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWY1cGJteHBibVU3SUdacGJHVnVZVzFsUFNKemRHOWpheTEyWldOMGIzSXRjM0JwWkdWeWJXRnVMV0Z5ZEMxa1pYTnBaMjR0YVdOdmJpMTJaV04wYjNJdGMzUnBZMnRsY2kxc2IyZHZMWE5wWjI0dGMzbHRZbTlzTFdaaGJXOTFjeTF0YjNacFpTMWphR0Z5WVdOMFpYSXRNakkzTWpreU9EazVNeTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTjBiMk5yTFhabFkzUnZjaTF6Y0dsa1pYSnRZVzR0WVhKMExXUmxjMmxuYmkxcFkyOXVMWFpsWTNSdmNpMXpkR2xqYTJWeUxXeHZaMjh0YzJsbmJpMXplVzFpYjJ3dFptRnRiM1Z6TFcxdmRtbGxMV05vWVhKaFkzUmxjaTB5TWpjeU9USTRPVGt6TG1wd1p3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIzLTA5LTE1VDEzOjM1OjU2LjIzOFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d75723b105d50385cef994afce0dc44c38e667de/stock-vector-spiderman-art-design-icon-vector-sticker-logo-sign-symbol-famous-movie-character-2272928993.jpg)[0m
+[active_model_serializers] Rendered UserProfileSerializer with ActiveModelSerializers::Adapter::Attributes (26.72ms)
+Completed 200 OK in 40ms (Views: 26.4ms | ActiveRecord: 2.2ms | Allocations: 29759)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaSE56WnpkbmVqQnBjR1UzT1dSdWFEQm5NM0ExWTI0NGJXdGtlUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWY1cGJteHBibVU3SUdacGJHVnVZVzFsUFNKemRHOWpheTEyWldOMGIzSXRjM0JwWkdWeWJXRnVMV0Z5ZEMxa1pYTnBaMjR0YVdOdmJpMTJaV04wYjNJdGMzUnBZMnRsY2kxc2IyZHZMWE5wWjI0dGMzbHRZbTlzTFdaaGJXOTFjeTF0YjNacFpTMWphR0Z5WVdOMFpYSXRNakkzTWpreU9EazVNeTVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTjBiMk5yTFhabFkzUnZjaTF6Y0dsa1pYSnRZVzR0WVhKMExXUmxjMmxuYmkxcFkyOXVMWFpsWTNSdmNpMXpkR2xqYTJWeUxXeHZaMjh0YzJsbmJpMXplVzFpYjJ3dFptRnRiM1Z6TFcxdmRtbGxMV05vWVhKaFkzUmxjaTB5TWpjeU9USTRPVGt6TG1wd1p3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIzLTA5LTE1VDEzOjM1OjU2LjIzOFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d75723b105d50385cef994afce0dc44c38e667de/stock-vector-spiderman-art-design-icon-vector-sticker-logo-sign-symbol-famous-movie-character-2272928993.jpg" for ::1 at 2023-09-15 19:01:03 +0530
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"stock-vector-spiderman-art-design-icon-vector-sticker-logo-sign-symbol-famous-movie-character-2272928993"}
+Completed 200 OK in 10ms (ActiveRecord: 0.0ms | Allocations: 2923)
+
+
