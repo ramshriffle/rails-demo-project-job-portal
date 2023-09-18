@@ -3,7 +3,7 @@ class JobsController < ApplicationController
   before_action :set_param, only: [:show, :update, :destroy]
   
   def index
-    jobs = @current_user.jobs.all
+    jobs = @current_user.jobs.page(params[:page]).per(3)
     render json: jobs
   end
   

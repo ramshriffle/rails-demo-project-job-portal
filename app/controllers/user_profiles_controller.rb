@@ -39,7 +39,7 @@ class UserProfilesController < ApplicationController
   private
   def check_for_existing_profile
     unless @current_user.user_profile.nil?
-      render json: 'You have already create profile'
+      render json: 'You have already created profile'
     end
   end
 
