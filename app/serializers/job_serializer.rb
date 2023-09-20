@@ -1,10 +1,8 @@
 class JobSerializer < ActiveModel::Serializer
-  attributes :id, :job_title, :description, :salary, :location#, :user
-  
-  # def user
-  #   {
-  #   id: object.user.id,
-  #   user: object.user.user_name
-  # }
-  # end
+  attributes :id, :job_title, :description, :salary, :location, :recruiter_name
+  # belongs_to :user
+
+  def recruiter_name
+    object.user.user_profile.f_name
+  end
 end

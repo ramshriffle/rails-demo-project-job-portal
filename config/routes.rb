@@ -22,7 +22,6 @@ Rails.application.routes.draw do
       get 'view_rejected_job_application'
     end
   end
-
   post 'password/forgot', to: 'passwords#forgot_password'
   post 'password/reset', to: 'passwords#reset_password'
 end

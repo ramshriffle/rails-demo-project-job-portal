@@ -12,7 +12,7 @@ class JobSeekersController < ApplicationController
 
   def view_all_jobs
     if params[:job_title].present?  
-      jobs = Job.search_job_by_title(params[:job_title])
+      jobs = Job.search_job_by_title(params[:job_title]).page(params[:page]).per(2)
       render json: jobs
     else
       render json: Job.page(params[:page]).per(2)

@@ -30415,3 +30415,2387 @@ DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use Act
 Completed 200 OK in 259ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 850)
 
 
+Started POST "/user/login" for ::1 at 2023-09-19 10:45:35 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ritik123@gmail.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 291ms (Views: 2.2ms | ActiveRecord: 0.8ms | Allocations: 31627)
+
+
+Started GET "/users" for ::1 at 2023-09-19 10:45:49 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.47ms)
+Completed 200 OK in 11ms (Views: 8.4ms | ActiveRecord: 0.2ms | Allocations: 4495)
+
+
+Started PUT "/users" for ::1 at 2023-09-19 10:46:11 +0530
+Processing by UsersController#update as */*
+  Parameters: {"user_name"=>"Ritikdhote"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mJobRecruiter Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "user_name" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["user_name", "Ritikdhote"], ["updated_at", "2023-09-19 05:16:11.217714"], ["id", 21]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.27ms)
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 2.5ms | Allocations: 5897)
+
+
+Started POST "/password/forgot" for ::1 at 2023-09-19 10:47:01 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"ritik123@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mJobRecruiter Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ?, "reset_password_sent_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 05:17:01.322472"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 21]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.html.erb within layouts/mailer (Duration: 3.2ms | Allocations: 455)
+  Rendered layout layouts/mailer.html.erb (Duration: 4.2ms | Allocations: 718)
+UserMailer#forgot_password: processed outbound mail in 29.5ms
+Delivered mail 65092ecd6295c_125e399432c@hp-HP-ProDesk-600-G2-SFF.mail (3803.6ms)
+Date: Tue, 19 Sep 2023 10:47:01 +0530
+From: ramkrishnak@shriffle.com
+To: ritik123@gmail.com
+Message-ID: <65092ecd6295c_125e399432c@hp-HP-ProDesk-600-G2-SFF.mail>
+Subject: Reset password request
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Reset Password Request</h1>
+    <p>your user name is : Ritikdhote </p>
+
+    <p>for reset password, use this code(otp) :f30ad724c651e220f36e </p>  
+
+    <p>If you did not make this request then please ignore this email</p>
+  </body>
+</html>
+  </body>
+</html>
+
+Completed 200 OK in 3890ms (Views: 1.4ms | ActiveRecord: 2.5ms | Allocations: 55322)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 10:47:58 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = ? LIMIT ?[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:18:in `reset_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mJobRecruiter Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = ?, "updated_at" = ?, "reset_password_token" = ? WHERE "users"."id" = ?[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2023-09-19 05:17:58.423545"], ["reset_password_token", "[FILTERED]"], ["id", 21]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+Completed 200 OK in 274ms (Views: 0.2ms | ActiveRecord: 3.3ms | Allocations: 4106)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 10:48:03 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = ? LIMIT ?[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:18:in `reset_password'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 404 Not Found in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 743)
+
+
+Started POST "/password/forgot" for ::1 at 2023-09-19 10:48:09 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"ritik123@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mJobRecruiter Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ?, "reset_password_sent_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 05:18:09.850648"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 21]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 13)
+  Rendered layout layouts/mailer.html.erb (Duration: 13.4ms | Allocations: 92)
+UserMailer#forgot_password: processed outbound mail in 14.9ms
+Delivered mail 65092f11d6b6b_125e399433e4@hp-HP-ProDesk-600-G2-SFF.mail (3743.9ms)
+Date: Tue, 19 Sep 2023 10:48:09 +0530
+From: ramkrishnak@shriffle.com
+To: ritik123@gmail.com
+Message-ID: <65092f11d6b6b_125e399433e4@hp-HP-ProDesk-600-G2-SFF.mail>
+Subject: Reset password request
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Reset Password Request</h1>
+    <p>your user name is : Ritikdhote </p>
+
+    <p>for reset password, use this code(otp) :1539ee52c7f78391a138 </p>  
+
+    <p>If you did not make this request then please ignore this email</p>
+  </body>
+</html>
+  </body>
+</html>
+
+Completed 200 OK in 3793ms (Views: 0.6ms | ActiveRecord: 2.5ms | Allocations: 7745)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 10:48:37 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = ? LIMIT ?[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:18:in `reset_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mJobRecruiter Update (0.1ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = ?, "updated_at" = ?, "reset_password_token" = ? WHERE "users"."id" = ?[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2023-09-19 05:18:37.317134"], ["reset_password_token", "[FILTERED]"], ["id", 21]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+Completed 200 OK in 274ms (Views: 0.3ms | ActiveRecord: 2.5ms | Allocations: 3936)
+
+
+Started POST "/user/login" for ::1 at 2023-09-19 10:48:46 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ritik123@gmail.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 276ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 849)
+
+
+Started GET "/users" for ::1 at 2023-09-19 10:48:58 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.29ms)
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 926)
+
+
+Started PUT "/users" for ::1 at 2023-09-19 10:49:07 +0530
+Processing by UsersController#update as */*
+  Parameters: {"user_name"=>"Ritikdhote"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.24ms)
+Completed 200 OK in 7ms (Views: 0.8ms | ActiveRecord: 0.5ms | Allocations: 3690)
+
+
+Started PUT "/users" for ::1 at 2023-09-19 10:50:07 +0530
+Processing by UsersController#update as */*
+  Parameters: {"user_name"=>"Ritikdhote"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.37ms)
+Completed 200 OK in 23ms (Views: 1.6ms | ActiveRecord: 1.4ms | Allocations: 15579)
+
+
+Started PUT "/users" for ::1 at 2023-09-19 10:50:39 +0530
+Processing by UsersController#update as */*
+  Parameters: {"user_name"=>"Ritikdhote"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.61ms)
+Completed 200 OK in 28ms (Views: 1.2ms | ActiveRecord: 1.8ms | Allocations: 14706)
+
+
+Started PUT "/users" for ::1 at 2023-09-19 10:50:59 +0530
+Processing by UsersController#update as */*
+  Parameters: {"user_name"=>"Ritikdhote"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (2.3ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 1.5ms | Allocations: 15938)
+
+
+  
+NoMethodError (undefined method `model_name' for Hash:Class
+Did you mean?  module_parent):
+  
+app/controllers/users_controller.rb:30:in `update'
+Started PUT "/users" for ::1 at 2023-09-19 10:51:39 +0530
+Processing by UsersController#update as */*
+  Parameters: {"user_name"=>"Ritikdhote"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.55ms)
+Completed 200 OK in 23ms (Views: 1.9ms | ActiveRecord: 1.4ms | Allocations: 16630)
+
+
+Started GET "/users" for ::1 at 2023-09-19 10:58:00 +0530
+Processing by UsersController#show as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.4ms)
+Completed 200 OK in 17ms (Views: 1.6ms | ActiveRecord: 0.6ms | Allocations: 11806)
+
+
+Started PUT "/users" for ::1 at 2023-09-19 10:58:43 +0530
+Processing by UsersController#update as */*
+  Parameters: {"user_name"=>"Ritikdhote"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.78ms)
+Completed 200 OK in 26ms (Views: 2.4ms | ActiveRecord: 1.9ms | Allocations: 15502)
+
+
+Started PUT "/users" for ::1 at 2023-09-19 10:59:03 +0530
+Processing by UsersController#update as */*
+  Parameters: {"user_name"=>"Ritikdhote"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.49ms)
+Completed 200 OK in 25ms (Views: 3.3ms | ActiveRecord: 1.5ms | Allocations: 15520)
+
+
+Started PUT "/users" for ::1 at 2023-09-19 11:01:36 +0530
+Processing by UsersController#update as */*
+  Parameters: {"user_name"=>"Ritikdhote"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 200 OK in 25ms (Views: 1.6ms | ActiveRecord: 1.6ms | Allocations: 15468)
+
+
+Started PUT "/users" for ::1 at 2023-09-19 11:01:45 +0530
+Processing by UsersController#update as */*
+  Parameters: {"user_name"=>"Ritikdhote"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.56ms)
+Completed 200 OK in 24ms (Views: 1.8ms | ActiveRecord: 1.4ms | Allocations: 15514)
+
+
+Started PUT "/users" for ::1 at 2023-09-19 11:02:07 +0530
+Processing by UsersController#update as */*
+  Parameters: {"user_name"=>"Ritikdhote"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 1.8ms | Allocations: 17200)
+
+
+  
+NoMethodError (undefined method `user_params' for #<JobRecruiter id: 21, user_name: "Ritikdhote", password_digest: [FILTERED], email: "ritik123@gmail.com", type: "JobRecruiter", created_at: "2023-09-13 11:12:24.119929000 +0000", updated_at: "2023-09-19 05:18:37.317134000 +0000", reset_password_token: nil, reset_password_sent_at: [FILTERED]>
+Did you mean?  user_name):
+  
+app/controllers/users_controller.rb:30:in `update'
+Started PUT "/users" for ::1 at 2023-09-19 11:11:34 +0530
+Processing by UsersController#update as */*
+  Parameters: {"user_name"=>"Ritikdhote"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:29:in `update'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::Attributes (0.34ms)
+Completed 200 OK in 21ms (Views: 1.4ms | ActiveRecord: 1.5ms | Allocations: 14990)
+
+
+Started GET "/jobs?page=1" for ::1 at 2023-09-19 11:11:47 +0530
+Processing by JobsController#index as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."user_id" = ? LIMIT ? OFFSET ?[0m  [["user_id", 21], ["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/controllers/jobs_controller.rb:7:in `index'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (23.21ms)
+Completed 200 OK in 73ms (Views: 53.8ms | ActiveRecord: 1.4ms | Allocations: 54620)
+
+
+Started GET "/job_seekers/view_all_jobs?page=1" for ::1 at 2023-09-19 11:12:58 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.99ms)
+Completed 200 OK in 12ms (Views: 6.1ms | ActiveRecord: 0.5ms | Allocations: 7773)
+
+
+Started GET "/job_seekers/view_all_jobs?page=2" for ::1 at 2023-09-19 11:13:09 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 2]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.2ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.5ms | Allocations: 4349)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:13:24 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.98ms)
+Completed 200 OK in 14ms (Views: 11.6ms | ActiveRecord: 0.5ms | Allocations: 4350)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:13:31 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 2]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.29ms)
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.5ms | Allocations: 4349)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:13:37 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 4]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 1529)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:13:47 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"job_title"=>"h", "page"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.5ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE (job_title LIKE 'h%')[0m
+  ↳ app/controllers/job_seekers_controller.rb:16:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.63ms)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 0.8ms | Allocations: 3005)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:13:52 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"job_title"=>"h", "page"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE (job_title LIKE 'h%')[0m
+  ↳ app/controllers/job_seekers_controller.rb:16:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.31ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.4ms | Allocations: 2979)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:13:57 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"job_title"=>"h", "page"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE (job_title LIKE 'h%')[0m
+  ↳ app/controllers/job_seekers_controller.rb:16:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.39ms)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.5ms | Allocations: 2979)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:14:01 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"job_title"=>"h", "page"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE (job_title LIKE 'h%')[0m
+  ↳ app/controllers/job_seekers_controller.rb:16:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.8ms)
+Completed 200 OK in 6ms (Views: 4.0ms | ActiveRecord: 0.4ms | Allocations: 2979)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:14:05 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"job_title"=>"h", "page"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.4ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE (job_title LIKE 'h%')[0m
+  ↳ app/controllers/job_seekers_controller.rb:16:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.86ms)
+Completed 200 OK in 10ms (Views: 6.7ms | ActiveRecord: 0.7ms | Allocations: 2981)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:14:09 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.2ms)
+Completed 200 OK in 11ms (Views: 8.0ms | ActiveRecord: 0.6ms | Allocations: 4348)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:14:29 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.2ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (22.82ms)
+Completed 200 OK in 52ms (Views: 27.2ms | ActiveRecord: 3.2ms | Allocations: 36449)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:14:33 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"job_title"=>"h", "page"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE (job_title LIKE 'h%') LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:16:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.61ms)
+Completed 200 OK in 8ms (Views: 5.9ms | ActiveRecord: 0.4ms | Allocations: 3318)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:14:39 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"job_title"=>"h", "page"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE (job_title LIKE 'h%') LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 2]]
+  ↳ app/controllers/job_seekers_controller.rb:16:in `view_all_jobs'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.06ms)
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 1660)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:14:57 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"job_title"=>"h", "page"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE (job_title LIKE 'h%') LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:16:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.22ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.4ms | Allocations: 3116)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:15:01 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:12:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.72ms)
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.6ms | Allocations: 4348)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:41:51 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.2ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (31.84ms)
+Completed 200 OK in 57ms (Views: 36.9ms | ActiveRecord: 1.1ms | Allocations: 35231)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:42:00 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 2]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.37ms)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 0.4ms | Allocations: 4352)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:42:06 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 4]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.07ms)
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 1529)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:42:17 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.2ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (24.59ms)
+Completed 200 OK in 51ms (Views: 28.7ms | ActiveRecord: 2.6ms | Allocations: 37947)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:42:24 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 3], ["OFFSET", 3]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.08ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.3ms | Allocations: 2992)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:55:28 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.2ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (19.73ms)
+Completed 200 OK in 45ms (Views: 24.0ms | ActiveRecord: 1.2ms | Allocations: 35128)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:55:37 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 2]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.87ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.4ms | Allocations: 4352)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:55:42 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"21"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 40]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.06ms)
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 1529)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 11:55:47 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.22ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.6ms | Allocations: 4348)
+
+
+Started POST "/password/forgot" for ::1 at 2023-09-19 14:38:16 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"ritik123@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mJobRecruiter Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ?, "reset_password_sent_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 09:08:16.553534"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 21]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.3ms | Allocations: 98)
+UserMailer#forgot_password: processed outbound mail in 2.2ms
+Delivered mail 650965008990e_125e39943475@hp-HP-ProDesk-600-G2-SFF.mail (4435.3ms)
+Date: Tue, 19 Sep 2023 14:38:16 +0530
+From: ramkrishnak@shriffle.com
+To: ritik123@gmail.com
+Message-ID: <650965008990e_125e39943475@hp-HP-ProDesk-600-G2-SFF.mail>
+Subject: Reset password request
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Reset Password Request</h1>
+    <p>your user name is : Ritikdhote </p>
+
+    <p>for reset password, use this code(otp) :cddbcfbb8d </p>  
+
+    <p>If you did not make this request then please ignore this email</p>
+  </body>
+</html>
+  </body>
+</html>
+
+Completed 200 OK in 4455ms (Views: 2.5ms | ActiveRecord: 3.5ms | Allocations: 14135)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 14:38:56 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"ritik1234@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = ? LIMIT ?[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:18:in `reset_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mJobRecruiter Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = ?, "updated_at" = ?, "reset_password_token" = ? WHERE "users"."id" = ?[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2023-09-19 09:08:57.147284"], ["reset_password_token", "[FILTERED]"], ["id", 21]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+Completed 200 OK in 277ms (Views: 0.2ms | ActiveRecord: 2.7ms | Allocations: 4078)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 14:39:06 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = ? LIMIT ?[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:18:in `reset_password'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 404 Not Found in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 1463)
+
+
+Started POST "/password/forgot" for ::1 at 2023-09-19 14:40:06 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"ritik123@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mJobRecruiter Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ?, "reset_password_sent_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 09:10:06.850864"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 21]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 99)
+UserMailer#forgot_password: processed outbound mail in 1.9ms
+Delivered mail 6509656ed1eac_125e3958357b@hp-HP-ProDesk-600-G2-SFF.mail (3825.2ms)
+Date: Tue, 19 Sep 2023 14:40:06 +0530
+From: ramkrishnak@shriffle.com
+To: ritik123@gmail.com
+Message-ID: <6509656ed1eac_125e3958357b@hp-HP-ProDesk-600-G2-SFF.mail>
+Subject: Reset password request
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Reset Password Request</h1>
+    <p>your user name is : Ritikdhote </p>
+
+    <p>for reset password, use this code(otp) :277553b5f8 </p>  
+
+    <p>If you did not make this request then please ignore this email</p>
+  </body>
+</html>
+  </body>
+</html>
+
+Completed 200 OK in 3857ms (Views: 2.2ms | ActiveRecord: 3.8ms | Allocations: 23830)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 14:40:28 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 1049)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 14:40:44 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]", "emails"=>"ritik1234@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 327)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 14:40:53 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]", "emails"=>"ritik123@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 327)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 14:41:14 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 327)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 14:41:20 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]", "emails"=>""}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 327)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 14:41:31 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]", "emails"=>""}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = ? LIMIT ?[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:21:in `reset_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mJobRecruiter Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = ?, "updated_at" = ?, "reset_password_token" = ? WHERE "users"."id" = ?[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2023-09-19 09:11:32.172902"], ["reset_password_token", "[FILTERED]"], ["id", 21]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+Completed 500 Internal Server Error in 289ms (Views: 1.1ms | ActiveRecord: 3.7ms | Allocations: 16783)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/passwords_controller.rb:25:in `reset_password'
+Started POST "/password/reset" for ::1 at 2023-09-19 14:41:47 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]", "emails"=>""}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 2926)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 14:41:51 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>""}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 326)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 14:41:57 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"ritik1234@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = ? LIMIT ?[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:21:in `reset_password'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 404 Not Found in 8ms (Views: 0.5ms | ActiveRecord: 0.7ms | Allocations: 5508)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 14:42:07 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"ritik1234@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = ? LIMIT ?[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:21:in `reset_password'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 404 Not Found in 2ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 740)
+
+
+Started POST "/password/forgot" for ::1 at 2023-09-19 14:42:16 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"ritik123@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mJobRecruiter Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ?, "reset_password_sent_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 09:12:16.442097"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 21]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.4ms | Allocations: 98)
+UserMailer#forgot_password: processed outbound mail in 2.9ms
+Delivered mail 650965f06ee29_125e399436f@hp-HP-ProDesk-600-G2-SFF.mail (3590.2ms)
+Date: Tue, 19 Sep 2023 14:42:16 +0530
+From: ramkrishnak@shriffle.com
+To: ritik123@gmail.com
+Message-ID: <650965f06ee29_125e399436f@hp-HP-ProDesk-600-G2-SFF.mail>
+Subject: Reset password request
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Reset Password Request</h1>
+    <p>your user name is : Ritikdhote </p>
+
+    <p>for reset password, use this code(otp) :447ce92dc6 </p>  
+
+    <p>If you did not make this request then please ignore this email</p>
+  </body>
+</html>
+  </body>
+</html>
+
+Completed 200 OK in 3626ms (Views: 1.8ms | ActiveRecord: 4.6ms | Allocations: 19615)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 14:42:44 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"ritik1234@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = ? LIMIT ?[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:21:in `reset_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mJobRecruiter Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = ?, "updated_at" = ?, "reset_password_token" = ? WHERE "users"."id" = ?[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2023-09-19 09:12:44.577452"], ["reset_password_token", "[FILTERED]"], ["id", 21]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+Completed 200 OK in 274ms (Views: 0.2ms | ActiveRecord: 2.2ms | Allocations: 3948)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 14:42:49 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]", "email"=>"ritik1234@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = ? LIMIT ?[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:21:in `reset_password'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 404 Not Found in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 742)
+
+
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:00:31 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"akshatp@shriffle.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mJobSeeker Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ?, "reset_password_sent_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 10:30:32.118324"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 25]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.html.erb within layouts/mailer (Duration: 1.6ms | Allocations: 455)
+  Rendered layout layouts/mailer.html.erb (Duration: 2.3ms | Allocations: 717)
+UserMailer#forgot_password: processed outbound mail in 28.0ms
+Delivered mail 650978482fe2e_f5b396c1662@hp-HP-ProDesk-600-G2-SFF.mail (4195.3ms)
+Date: Tue, 19 Sep 2023 16:00:32 +0530
+From: ramkrishnak@shriffle.com
+To: akshatp@shriffle.com
+Message-ID: <650978482fe2e_f5b396c1662@hp-HP-ProDesk-600-G2-SFF.mail>
+Subject: Reset password request
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Reset Password Request</h1>
+    <p>your user name is : akshatpegwar </p>
+
+    <p>for reset password, use this code(otp) :e2fc2aded6 </p>  
+
+    <p>If you did not make this request then please ignore this email</p>
+  </body>
+</html>
+  </body>
+</html>
+
+Completed 200 OK in 4311ms (Views: 2.9ms | ActiveRecord: 4.0ms | Allocations: 86100)
+
+
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:00:47 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"akshatp@shriffle.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mJobSeeker Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ?, "reset_password_sent_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 10:30:47.675532"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 25]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 2d9e9048-677e-499a-9c53-a88e49a6563c) to Async(default) with arguments: "UserMailer", "forgot_password", "deliver_now", {:args=>[#<GlobalID:0x00007f0eacbdfb70 @uri=#<URI::GID gid://job-portal/JobSeeker/25>>]}
+Completed 200 OK in 32ms (Views: 1.9ms | ActiveRecord: 3.6ms | Allocations: 20423)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2d9e9048-677e-499a-9c53-a88e49a6563c]   [1m[36mJobSeeker Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."type" = ? AND "users"."id" = ? LIMIT ?[0m  [["type", "JobSeeker"], ["id", 25], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2d9e9048-677e-499a-9c53-a88e49a6563c] Performing ActionMailer::MailDeliveryJob (Job ID: 2d9e9048-677e-499a-9c53-a88e49a6563c) from Async(default) enqueued at 2023-09-19T10:30:47Z with arguments: "UserMailer", "forgot_password", "deliver_now", {:args=>[#<GlobalID:0x00007f0ea0e00b90 @uri=#<URI::GID gid://job-portal/JobSeeker/25>>]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2d9e9048-677e-499a-9c53-a88e49a6563c]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2d9e9048-677e-499a-9c53-a88e49a6563c]   Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2d9e9048-677e-499a-9c53-a88e49a6563c]   Rendered user_mailer/forgot_password.html.erb within layouts/mailer (Duration: 2.4ms | Allocations: 195)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2d9e9048-677e-499a-9c53-a88e49a6563c]   Rendered layout layouts/mailer.html.erb (Duration: 3.4ms | Allocations: 453)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2d9e9048-677e-499a-9c53-a88e49a6563c] UserMailer#forgot_password: processed outbound mail in 6.2ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2d9e9048-677e-499a-9c53-a88e49a6563c] Delivered mail 65097857ab798_f5b9358167d4@hp-HP-ProDesk-600-G2-SFF.mail (3818.3ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2d9e9048-677e-499a-9c53-a88e49a6563c] Date: Tue, 19 Sep 2023 16:00:47 +0530
+From: ramkrishnak@shriffle.com
+To: akshatp@shriffle.com
+Message-ID: <65097857ab798_f5b9358167d4@hp-HP-ProDesk-600-G2-SFF.mail>
+Subject: Reset password request
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Reset Password Request</h1>
+    <p>your user name is : akshatpegwar </p>
+
+    <p>for reset password, use this code(otp) :a4fdf929b1 </p>  
+
+    <p>If you did not make this request then please ignore this email</p>
+  </body>
+</html>
+  </body>
+</html>
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [2d9e9048-677e-499a-9c53-a88e49a6563c] Performed ActionMailer::MailDeliveryJob (Job ID: 2d9e9048-677e-499a-9c53-a88e49a6563c) from Async(default) in 3829.34ms
+Started POST "/user/login" for ::1 at 2023-09-19 16:08:12 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ritik123@gmail.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 279ms (Views: 2.0ms | ActiveRecord: 0.6ms | Allocations: 12998)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 16:08:31 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (30.89ms)
+Completed 200 OK in 62ms (Views: 52.6ms | ActiveRecord: 1.5ms | Allocations: 57291)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 16:08:44 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.48ms)
+Completed 200 OK in 36ms (Views: 6.2ms | ActiveRecord: 2.3ms | Allocations: 17882)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 16:09:01 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name1'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name1'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name1'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name1'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (16.96ms)
+Completed 200 OK in 43ms (Views: 21.3ms | ActiveRecord: 2.3ms | Allocations: 29901)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 16:09:22 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mUserProfile Load (0.2ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (20.38ms)
+Completed 200 OK in 61ms (Views: 27.7ms | ActiveRecord: 2.7ms | Allocations: 32955)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 16:09:35 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.1ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (30.52ms)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 2.2ms | Allocations: 37649)
+
+
+  
+NoMethodError (undefined method `recruiter_name' for #<Job id: 8, job_title: "Hr1", description: "We need 2 year experioenced Hr", location: "Bengaluru", salary: 0.3e5, user_id: 21, created_at: "2023-09-13 11:16:07.524612000 +0000", updated_at: "2023-09-15 10:06:41.293954000 +0000">):
+  
+app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 16:09:47 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mUserProfile Load (0.4ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `user'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (16.31ms)
+Completed 200 OK in 45ms (Views: 20.2ms | ActiveRecord: 2.7ms | Allocations: 33977)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 16:10:01 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name'
+[active_model_serializers]   [1m[36mUserProfile Load (8.7ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (29.41ms)
+Completed 200 OK in 55ms (Views: 25.6ms | ActiveRecord: 10.9ms | Allocations: 34056)
+
+
+Started GET "/job_seekers/view_all_jobs" for ::1 at 2023-09-19 16:10:17 +0530
+Processing by JobSeekersController#view_all_jobs as */*
+  Parameters: {"page"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `authenticate_request'
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" LIMIT ? OFFSET ?[0m  [["LIMIT", 2], ["OFFSET", 0]]
+  ↳ app/controllers/job_seekers_controller.rb:18:in `view_all_jobs'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name'
+[active_model_serializers]   [1m[36mUserProfile Load (0.2ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name'
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name'
+[active_model_serializers]   [1m[36mCACHE UserProfile Load (0.0ms)[0m  [1m[34mSELECT "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = ? LIMIT ?[0m  [["user_id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/job_serializer.rb:6:in `recruiter_name'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (16.02ms)
+Completed 200 OK in 41ms (Views: 20.3ms | ActiveRecord: 2.2ms | Allocations: 29928)
+
+
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:30:02 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"akshatp@shriffle.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mJobSeeker Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ?, "reset_password_sent_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 11:00:02.414836"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 25]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: aacdb3d9-2ba1-407d-a0b3-39287070b92d) to Async(default) with arguments: "UserMailer", "forgot_password", "deliver_now", {:args=>[#<GlobalID:0x00007f0ea10fb250 @uri=#<URI::GID gid://job-portal/JobSeeker/25>>]}
+Completed 200 OK in 27ms (Views: 0.8ms | ActiveRecord: 4.9ms | Allocations: 12757)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aacdb3d9-2ba1-407d-a0b3-39287070b92d]   [1m[36mJobSeeker Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."type" = ? AND "users"."id" = ? LIMIT ?[0m  [["type", "JobSeeker"], ["id", 25], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aacdb3d9-2ba1-407d-a0b3-39287070b92d] Performing ActionMailer::MailDeliveryJob (Job ID: aacdb3d9-2ba1-407d-a0b3-39287070b92d) from Async(default) enqueued at 2023-09-19T11:00:02Z with arguments: "UserMailer", "forgot_password", "deliver_now", {:args=>[#<GlobalID:0x00007f0ea115a9d0 @uri=#<URI::GID gid://job-portal/JobSeeker/25>>]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aacdb3d9-2ba1-407d-a0b3-39287070b92d]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aacdb3d9-2ba1-407d-a0b3-39287070b92d]   Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aacdb3d9-2ba1-407d-a0b3-39287070b92d]   Rendered user_mailer/forgot_password.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 16)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aacdb3d9-2ba1-407d-a0b3-39287070b92d]   Rendered layout layouts/mailer.html.erb (Duration: 0.4ms | Allocations: 118)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aacdb3d9-2ba1-407d-a0b3-39287070b92d] UserMailer#forgot_password: processed outbound mail in 2.6ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aacdb3d9-2ba1-407d-a0b3-39287070b92d] Delivered mail 65097f326a6f8_f5b93581683@hp-HP-ProDesk-600-G2-SFF.mail (4003.7ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aacdb3d9-2ba1-407d-a0b3-39287070b92d] Date: Tue, 19 Sep 2023 16:30:02 +0530
+From: ramkrishnak@shriffle.com
+To: akshatp@shriffle.com
+Message-ID: <65097f326a6f8_f5b93581683@hp-HP-ProDesk-600-G2-SFF.mail>
+Subject: Reset password request
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Reset Password Request</h1>
+    <p>your user name is : akshatpegwar </p>
+
+    <p>for reset password, use this code(otp) :d89a09bbea </p>  
+
+    <p>If you did not make this request then please ignore this email</p>
+  </body>
+</html>
+  </body>
+</html>
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [aacdb3d9-2ba1-407d-a0b3-39287070b92d] Performed ActionMailer::MailDeliveryJob (Job ID: aacdb3d9-2ba1-407d-a0b3-39287070b92d) from Async(default) in 4010.57ms
+Started POST "/password/reset" for ::1 at 2023-09-19 16:30:56 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = ? LIMIT ?[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:18:in `reset_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mJobSeeker Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 11:00:56.540435"], ["reset_password_token", "[FILTERED]"], ["id", 25]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+Completed 200 OK in 25ms (Views: 0.7ms | ActiveRecord: 3.4ms | Allocations: 16329)
+
+
+Started POST "/user/login" for ::1 at 2023-09-19 16:31:04 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ritik123@gmail.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 264ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 4384)
+
+
+Started POST "/user/login" for ::1 at 2023-09-19 16:31:10 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ritik123@gmail.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 264ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 785)
+
+
+Started POST "/user/login" for ::1 at 2023-09-19 16:31:48 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"akshatp@shriffle.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 258ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 851)
+
+
+Started POST "/user/login" for ::1 at 2023-09-19 16:31:56 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"akshatp@shriffle.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 260ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 781)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 16:32:09 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = ? LIMIT ?[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:18:in `reset_password'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 404 Not Found in 2ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 741)
+
+
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:32:19 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"akshatp@shriffle.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mJobSeeker Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ?, "reset_password_sent_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 11:02:19.907372"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 25]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 99)
+UserMailer#forgot_password: processed outbound mail in 2.1ms
+Delivered mail 65097fbbe21f6_f5b3944169a2@hp-HP-ProDesk-600-G2-SFF.mail (4132.6ms)
+Date: Tue, 19 Sep 2023 16:32:19 +0530
+From: ramkrishnak@shriffle.com
+To: akshatp@shriffle.com
+Message-ID: <65097fbbe21f6_f5b3944169a2@hp-HP-ProDesk-600-G2-SFF.mail>
+Subject: Reset password request
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Reset Password Request</h1>
+    <p>your user name is : akshatpegwar </p>
+
+    <p>for reset password, use this code(otp) :e6eb964e5c </p>  
+
+    <p>If you did not make this request then please ignore this email</p>
+  </body>
+</html>
+  </body>
+</html>
+
+Completed 200 OK in 4157ms (Views: 0.6ms | ActiveRecord: 4.3ms | Allocations: 13559)
+
+
+Started POST "/user/login" for ::1 at 2023-09-19 16:32:50 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"akshatp@shriffle.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 259ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 782)
+
+
+Started POST "/user/login" for ::1 at 2023-09-19 16:32:55 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"akshatp@shriffle.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 255ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 785)
+
+
+Started POST "/user/login" for ::1 at 2023-09-19 16:33:00 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"akshatp@shriffle.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 261ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 782)
+
+
+Started POST "/user/login" for ::1 at 2023-09-19 16:33:04 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"akshatp@shriffle.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 260ms (Views: 0.4ms | ActiveRecord: 0.1ms | Allocations: 851)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 16:33:34 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = ? LIMIT ?[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:18:in `reset_password'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mJobSeeker Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 11:03:34.689285"], ["reset_password_token", "[FILTERED]"], ["id", 25]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.3ms | Allocations: 3887)
+
+
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:34:25 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"akshatp@shriffle.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+Completed 422 Unprocessable Entity in 25ms (ActiveRecord: 1.7ms | Allocations: 14835)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Password can't be blank):
+  
+app/models/user.rb:14:in `generate_password_token!'
+app/controllers/passwords_controller.rb:7:in `forgot_password'
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:34:34 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"akshatp@shriffle.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+Completed 422 Unprocessable Entity in 7ms (ActiveRecord: 0.4ms | Allocations: 4036)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Password can't be blank):
+  
+app/models/user.rb:14:in `generate_password_token!'
+app/controllers/passwords_controller.rb:7:in `forgot_password'
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:34:40 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"akshatp@shriffle.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+Completed 422 Unprocessable Entity in 7ms (ActiveRecord: 0.5ms | Allocations: 4034)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Password can't be blank):
+  
+app/models/user.rb:14:in `generate_password_token!'
+app/controllers/passwords_controller.rb:7:in `forgot_password'
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:35:23 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"akshatp@shriffle.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mJobSeeker Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ?, "reset_password_sent_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 11:05:23.936165"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 25]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.5ms | Allocations: 98)
+UserMailer#forgot_password: processed outbound mail in 2.2ms
+Delivered mail 65098073e6d29_f5b396c17097@hp-HP-ProDesk-600-G2-SFF.mail (3698.7ms)
+Date: Tue, 19 Sep 2023 16:35:23 +0530
+From: ramkrishnak@shriffle.com
+To: akshatp@shriffle.com
+Message-ID: <65098073e6d29_f5b396c17097@hp-HP-ProDesk-600-G2-SFF.mail>
+Subject: Reset password request
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Reset Password Request</h1>
+    <p>your user name is : akshatpegwar </p>
+
+    <p>for reset password, use this code(otp) :8e7291f3e2 </p>  
+
+    <p>If you did not make this request then please ignore this email</p>
+  </body>
+</html>
+  </body>
+</html>
+
+Completed 200 OK in 3731ms (Views: 2.8ms | ActiveRecord: 3.6ms | Allocations: 23864)
+
+
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:35:43 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"akshatp@shriffle.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+Completed 422 Unprocessable Entity in 22ms (ActiveRecord: 1.4ms | Allocations: 14470)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Password can't be blank):
+  
+app/models/user.rb:14:in `generate_password_token!'
+app/controllers/passwords_controller.rb:7:in `forgot_password'
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:35:59 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"akshatp@shriffle.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+Completed 422 Unprocessable Entity in 9ms (ActiveRecord: 0.5ms | Allocations: 4034)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Password can't be blank):
+  
+app/models/user.rb:14:in `generate_password_token!'
+app/controllers/passwords_controller.rb:7:in `forgot_password'
+Started POST "/password/forgot?email=akshatp@shriffle.com" for ::1 at 2023-09-19 16:39:07 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"akshatp@shriffle.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+Completed 422 Unprocessable Entity in 5ms (ActiveRecord: 0.4ms | Allocations: 4032)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Password can't be blank):
+  
+app/models/user.rb:14:in `generate_password_token!'
+app/controllers/passwords_controller.rb:7:in `forgot_password'
+Started POST "/password/forgot?email=akshatp@shriffle.com" for ::1 at 2023-09-19 16:41:19 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"akshatp@shriffle.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mJobSeeker Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ?, "reset_password_sent_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 11:11:19.907955"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 25]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 98)
+UserMailer#forgot_password: processed outbound mail in 2.0ms
+Delivered mail 650981d7e0526_f5b394417133@hp-HP-ProDesk-600-G2-SFF.mail (3646.9ms)
+Date: Tue, 19 Sep 2023 16:41:19 +0530
+From: ramkrishnak@shriffle.com
+To: akshatp@shriffle.com
+Message-ID: <650981d7e0526_f5b394417133@hp-HP-ProDesk-600-G2-SFF.mail>
+Subject: Reset password request
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Reset Password Request</h1>
+    <p>your user name is : akshatpegwar </p>
+
+    <p>for reset password, use this code(otp) :df2cd16b07 </p>  
+
+    <p>If you did not make this request then please ignore this email</p>
+  </body>
+</html>
+  </body>
+</html>
+
+Completed 200 OK in 3679ms (Views: 2.6ms | ActiveRecord: 4.5ms | Allocations: 23954)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 16:41:42 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = ? LIMIT ?[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:18:in `reset_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mJobSeeker Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 11:11:42.199194"], ["reset_password_token", "[FILTERED]"], ["id", 25]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 3.0ms | Allocations: 4033)
+
+
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:44:15 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"akshatp@shriffle.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:15:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:15:in `generate_password_token!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/user.rb:15:in `generate_password_token!'
+Completed 422 Unprocessable Entity in 30ms (ActiveRecord: 1.5ms | Allocations: 14627)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Password is the wrong length (should be 6 characters)):
+  
+app/models/user.rb:15:in `generate_password_token!'
+app/controllers/passwords_controller.rb:7:in `forgot_password'
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:48:57 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"akshatp@shriffle.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "akshatpegwar"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+Completed 422 Unprocessable Entity in 22ms (ActiveRecord: 1.4ms | Allocations: 14559)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Password can't be blank):
+  
+app/models/user.rb:14:in `generate_password_token!'
+app/controllers/passwords_controller.rb:7:in `forgot_password'
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:50:06 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"ritik123@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mJobRecruiter Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ?, "reset_password_sent_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 11:20:06.126037"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 21]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.4ms | Allocations: 98)
+UserMailer#forgot_password: processed outbound mail in 2.5ms
+Delivered mail 650983e621339_f5b3944172dc@hp-HP-ProDesk-600-G2-SFF.mail (4050.5ms)
+Date: Tue, 19 Sep 2023 16:50:06 +0530
+From: ramkrishnak@shriffle.com
+To: ritik123@gmail.com
+Message-ID: <650983e621339_f5b3944172dc@hp-HP-ProDesk-600-G2-SFF.mail>
+Subject: Reset password request
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Reset Password Request</h1>
+    <p>your user name is : Ritikdhote </p>
+
+    <p>for reset password, use this code(otp) :1071ed50af </p>  
+
+    <p>If you did not make this request then please ignore this email</p>
+  </body>
+</html>
+  </body>
+</html>
+
+Completed 200 OK in 4084ms (Views: 2.7ms | ActiveRecord: 3.8ms | Allocations: 23925)
+
+
+Started POST "/password/reset" for ::1 at 2023-09-19 16:50:33 +0530
+Processing by PasswordsController#reset_password as */*
+  Parameters: {"token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = ? LIMIT ?[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:18:in `reset_password'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mJobRecruiter Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 11:20:33.343747"], ["reset_password_token", "[FILTERED]"], ["id", 21]]
+  ↳ app/models/user.rb:24:in `reset_password!'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:24:in `reset_password!'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 2.3ms | Allocations: 4038)
+
+
+Started POST "/user/login" for ::1 at 2023-09-19 16:50:38 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"ritik123@gmail.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 266ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 1775)
+
+
+Started POST "/user/login" for ::1 at 2023-09-19 16:50:42 +0530
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"akshatp@shriffle.com", "password"=>"[FILTERED]"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "akshatp@shriffle.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `login'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 267ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 3286)
+
+
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:51:44 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"ritik123@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+Completed 422 Unprocessable Entity in 22ms (ActiveRecord: 1.3ms | Allocations: 14598)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Password can't be blank):
+  
+app/models/user.rb:14:in `generate_password_token!'
+app/controllers/passwords_controller.rb:7:in `forgot_password'
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:51:51 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"ritik123@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+Completed 422 Unprocessable Entity in 21ms (ActiveRecord: 1.4ms | Allocations: 14453)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Password can't be blank):
+  
+app/models/user.rb:14:in `generate_password_token!'
+app/controllers/passwords_controller.rb:7:in `forgot_password'
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:52:05 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"ritik123@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:13:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13:in `generate_password_token!'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:13:in `generate_password_token!'
+  [1m[36mJobRecruiter Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ?, "reset_password_sent_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 11:22:05.631184"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 21]]
+  ↳ app/models/user.rb:13:in `generate_password_token!'
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:13:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.5ms | Allocations: 98)
+UserMailer#forgot_password: processed outbound mail in 2.5ms
+Delivered mail 6509845d9cc13_f5b3944173bc@hp-HP-ProDesk-600-G2-SFF.mail (3638.6ms)
+Date: Tue, 19 Sep 2023 16:52:05 +0530
+From: ramkrishnak@shriffle.com
+To: ritik123@gmail.com
+Message-ID: <6509845d9cc13_f5b3944173bc@hp-HP-ProDesk-600-G2-SFF.mail>
+Subject: Reset password request
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Reset Password Request</h1>
+    <p>your user name is : Ritikdhote </p>
+
+    <p>for reset password, use this code(otp) :0cd10cffb9 </p>  
+
+    <p>If you did not make this request then please ignore this email</p>
+  </body>
+</html>
+  </body>
+</html>
+
+Completed 200 OK in 3679ms (Views: 2.9ms | ActiveRecord: 4.6ms | Allocations: 23862)
+
+
+Started POST "/password/forgot" for ::1 at 2023-09-19 16:52:31 +0530
+Processing by PasswordsController#forgot_password as */*
+  Parameters: {"email"=>"ritik123@gmail.com"}
+DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use ActiveStorage::Current.url_options= (called from block in <class:ApplicationController> at /home/hp/Music/job_portal/app/controllers/application_controller.rb:5)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/passwords_controller.rb:5:in `forgot_password'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."user_name") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["user_name", "Ritikdhote"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) AND "users"."id" != ? LIMIT ?[0m  [["email", "ritik123@gmail.com"], ["id", 21], ["LIMIT", 1]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mJobRecruiter Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "reset_password_token" = ?, "reset_password_sent_at" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2023-09-19 11:22:31.761273"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 21]]
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/models/user.rb:14:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/forgot_password.html.erb within layouts/mailer
+  Rendered user_mailer/forgot_password.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 16)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 99)
+UserMailer#forgot_password: processed outbound mail in 2.2ms
+Delivered mail 65098477bc25a_f5b39801742d@hp-HP-ProDesk-600-G2-SFF.mail (3782.6ms)
+Date: Tue, 19 Sep 2023 16:52:31 +0530
+From: ramkrishnak@shriffle.com
+To: ritik123@gmail.com
+Message-ID: <65098477bc25a_f5b39801742d@hp-HP-ProDesk-600-G2-SFF.mail>
+Subject: Reset password request
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Reset Password Request</h1>
+    <p>your user name is : Ritikdhote </p>
+
+    <p>for reset password, use this code(otp) :2eff5b0c53 </p>  
+
+    <p>If you did not make this request then please ignore this email</p>
+  </body>
+</html>
+  </body>
+</html>
+
+Completed 200 OK in 3817ms (Views: 2.6ms | ActiveRecord: 3.8ms | Allocations: 23946)
+
+
