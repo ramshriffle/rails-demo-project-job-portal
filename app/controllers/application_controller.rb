@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  # skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
   # before_action :authenticate_request
   include JsonWebToken
   before_action do
@@ -19,16 +19,12 @@ class ApplicationController < ActionController::Base
       render json: "No record found.."
     end
   end
-  
+
   def check_job_recruiter
-    unless @current_user.type == 'JobRecruiter'
-      render json: { message: "You are not Recruiter" } 
-    end
+    render json: { message: "You are not Recruiter" } unless @current_user.type == 'JobRecruiter'    
   end
   
   def check_job_seeker
-    unless @current_user.type == 'JobSeeker'
-      render json: { message: "You are not Seeker" } 
-    end
+    render json: { message: "You are not Seeker" } unless @current_user.type == 'JobSeeker'
   end
 end

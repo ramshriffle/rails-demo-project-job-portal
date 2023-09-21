@@ -3,11 +3,13 @@ class Job < ApplicationRecord
   has_many :user_applications, dependent: :destroy
   
   validates :job_title, :description, :location, :salary, presence: true
+  validate :check_job_recruiter
+
   scope :search_job_by_title, ->(title) {where("job_title LIKE ?", "#{title}%")}
-  
-  # def self.search_job_by_title(title)
-  #   where("job_title LIKE ?", "#{title}%")
-  # end
+
+  def check_job_recruiter
+    errors.add(:base, message: "you have not permission to create job application") unless user.type == 'JobRecruiter'    
+  end
 
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "description", "id", "job_title", "location", "salary", "updated_at", "user_id"]

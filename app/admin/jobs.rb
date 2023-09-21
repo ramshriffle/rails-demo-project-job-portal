@@ -32,11 +32,11 @@ ActiveAdmin.register Job do
   filter :job_title
   filter :salary
   filter :location
-  filter :user
+  filter :user_id
 
   form do |f|
     f.inputs do
-      f.input :user
+      f.input :user_id
       f.input :job_title
       f.input :description
       f.input :location
