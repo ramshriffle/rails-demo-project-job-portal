@@ -1,15 +1,20 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+         
   has_one :user_profile, dependent: :destroy
   has_many :jobs, dependent: :destroy
   has_many :user_applications, dependent: :destroy
   
-  has_secure_password
+  # has_secure_password
   validates :user_name, :email, presence: true, uniqueness: {case_sensitive: false}
   validates :type, presence: true
   validates :email, format: {  with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,message: "Please Enter Valid Email" }
   
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "email", "id", "password_digest", "reset_password_sent_at", "reset_password_token", "type", "updated_at", "user_name"]
+    ["created_at", "email", "id", "encrypted_password", "reset_password_sent_at", "reset_password_token", "type", "updated_at", "user_name"]
   end
 
   # def self.ransackable_associations(auth_object = nil)

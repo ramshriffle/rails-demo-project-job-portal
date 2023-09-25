@@ -18,7 +18,7 @@ ActiveAdmin.register UserProfile do
   index do
     selectable_column
     id_column
-    column :f_name2
+    column :f_name
     column :l_name
     column :skills
     column :experience
@@ -28,6 +28,10 @@ ActiveAdmin.register UserProfile do
     actions
   end
   filter :f_name
+  filter :skills
+  filter :education
+  filter :experience
+
 
 
   form do |f|

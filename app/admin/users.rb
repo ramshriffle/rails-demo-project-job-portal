@@ -12,14 +12,14 @@ ActiveAdmin.register User do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  permit_params :user_name, :password, :password_confirmation, :email, :type, :reset_password_token, :reset_password_sent_at
+  permit_params :user_name, :encrypted_password, :email, :type, :reset_password_token, :reset_password_sent_at
 
   index do
     selectable_column
     id_column
     column :user_name
     column :email
-    column :password_digest
+    column :encrypted_password
     column :type
     actions
   end
@@ -33,8 +33,8 @@ ActiveAdmin.register User do
       f.input :user_name
       f.input :email
       f.input :type
-      f.input :password 
-      f.input :password_confirmation
+      f.input :encrypted_password 
+      # f.input :password_confirmation
     end
     f.actions
   end

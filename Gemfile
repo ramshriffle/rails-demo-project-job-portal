@@ -55,7 +55,9 @@ gem "bootsnap", require: false
 gem 'kaminari', '~> 1.2.1'
 
 gem "activeadmin"
+
 gem "devise"
+
 gem "sass-rails"
 
 # Use Sass to process CSS

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_request, except: [:create, :login]  
+  before_action :authenticate_request, except: [:create, :login] 
+
   def login
     user = User.find_by_email(params[:email])
     if user&.authenticate(params[:password])
@@ -42,6 +43,6 @@ class UsersController < ApplicationController
   
   private
   def user_params
-    params.permit(:user_name, :email, :password, :type)
+    params.permit(:user_name, :email, :encrypted_password, :type)
   end
 end
