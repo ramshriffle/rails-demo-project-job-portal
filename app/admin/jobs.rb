@@ -16,7 +16,7 @@ ActiveAdmin.register Job do
   # end
   # belongs_to :user
   permit_params :job_title, :description, :location, :salary, :user_id
-
+  # belongs_to :user
   index do
     selectable_column
     id_column
@@ -32,11 +32,12 @@ ActiveAdmin.register Job do
   filter :job_title
   filter :salary
   filter :location
-  filter :user_id
+  filter :user, collection: User.all.map{|a| [a.user_name , a.id] } 
 
   form do |f|
     f.inputs do
-      f.input :user_id
+      f.input :user, collection: User.all.map{|a| [a.user_name , a.id] }
+      # f.input :user_id
       f.input :job_title
       f.input :description
       f.input :location

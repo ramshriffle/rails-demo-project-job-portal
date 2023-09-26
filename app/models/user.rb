@@ -17,9 +17,9 @@ class User < ApplicationRecord
     ["created_at", "email", "id", "encrypted_password", "reset_password_sent_at", "reset_password_token", "type", "updated_at", "user_name"]
   end
 
-  # def self.ransackable_associations(auth_object = nil)
-  #   ["jobs", "user_applications", "user_profile"]
-  # end
+  def self.ransackable_associations(auth_object = nil)
+    ["jobs", "user_applications", "user_profile"]
+  end
 
   def generate_password_token!
     self.reset_password_token = generate_token
