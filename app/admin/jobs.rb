@@ -14,9 +14,9 @@ ActiveAdmin.register Job do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  # belongs_to :user
+
   permit_params :job_title, :description, :location, :salary, :user_id
-  # belongs_to :user
+ 
   index do
     selectable_column
     id_column

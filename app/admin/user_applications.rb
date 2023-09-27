@@ -13,7 +13,8 @@ ActiveAdmin.register UserApplication do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+  config.per_page = 3
+
   permit_params :job_id, :user_id, :status, :resume
   
   index do
@@ -22,9 +23,9 @@ ActiveAdmin.register UserApplication do
     column :status
     column :job_id
     column :user_id
-    column :resume
-    column :created_at
-    column :updated_at
+    column :resume do |apply|
+      link_to "Resume", apply.resume.url
+    end
     actions
   end
   
@@ -35,7 +36,6 @@ ActiveAdmin.register UserApplication do
       f.input :job_id
       f.input :user_id
       f.input :status
-
       f.input :resume ,as: :file 
     end
     f.actions
@@ -48,9 +48,8 @@ ActiveAdmin.register UserApplication do
       row :user_id
       row :created_at
       row :updated_at
-
-      row :resume do |ad|
-        image_tag url_for(ad.resume)
+      row :resume do |apply|
+        link_to "Resume", apply.resume.url
       end
     end
   end

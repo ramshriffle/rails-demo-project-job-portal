@@ -24,7 +24,9 @@ ActiveAdmin.register UserProfile do
     column :experience
     column :education
     column :user_id
-    column :image
+    column :image do |img|
+      image_tag img.image.url,size: "30x30"
+    end
     actions
   end
   filter :f_name
@@ -55,8 +57,8 @@ ActiveAdmin.register UserProfile do
       row :education
       row :user_id
 
-      row :image do |ad|
-        image_tag url_for(ad.image)
+      row :image do |img|
+        image_tag img.image.url
       end
     end
   end
