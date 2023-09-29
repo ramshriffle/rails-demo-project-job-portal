@@ -33,13 +33,13 @@ class UsersController < ApplicationController
     end
   end
   
-  def destroy
-    if @current_user.destroy
-      render json: { message: 'User deleted successfully' }
-    else
-      render json: { errors: @current_user.errors.full_messages }
-    end
-  end
+  # def destroy
+  #   if @current_user.destroy
+  #     render json: { message: 'User deleted successfully' }
+  #   else
+  #     render json: { errors: @current_user.errors.full_messages }
+  #   end
+  # end
   
   private
   def user_params

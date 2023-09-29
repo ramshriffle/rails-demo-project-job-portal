@@ -25,7 +25,7 @@ ActiveAdmin.register UserProfile do
     column :education
     column :user_id
     column :image do |img|
-      image_tag img.image.url,size: "30x30"
+      image_tag img.image.url, size: "30x30"
     end
     actions
   end

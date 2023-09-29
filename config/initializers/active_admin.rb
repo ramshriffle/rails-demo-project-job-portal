@@ -264,7 +264,7 @@ ActiveAdmin.setup do |config|
 
   # == Download Links
   #
-  # You can disable download links on resource listing pages,
+  # You can disable download lincomments_registration_nameks on resource listing pages,
   # or customize the formats shown per namespace/globally
   #
   # To disable/customize for the :admin namespace:
@@ -349,4 +349,5 @@ ActiveAdmin.setup do |config|
   # You can switch to using Webpacker here.
   #
   # config.use_webpacker = true
+  config.comments = false
 end
